@@ -1,0 +1,69 @@
+# Contributing
+
+Thank you for helping keep this list focused, current, and useful. Contributions should improve the signal of the list rather than expand it for completeness.
+
+## Scope
+
+This repository tracks recent technical resources on recursive self-improvement in AI: inspectable systems that improve their own performance loops through feedback, experience, self-evaluation, tool use, code modification, synthetic data, memory, test-time adaptation, evaluation, verification, or governed update mechanisms.
+
+It is not a general AGI, singularity, futurism, philosophy, or AI-agent directory.
+
+## Inclusion Criteria
+
+A resource must:
+
+- Be published or substantially updated from 2022 onwards.
+- Be directly relevant to AI recursive self-improvement.
+- Use a stable, accessible link.
+- Prefer primary sources.
+- Add something distinct to the list.
+- Fit one section clearly.
+- Use the required format.
+
+Primary sources include arXiv, ACL Anthology, OpenReview, official conference or workshop pages, official project pages, official GitHub repositories, official lab blogs, and official documentation.
+
+## Exclusion Criteria
+
+Do not add:
+
+- Pre-2022 resources.
+- Generic AGI, singularity, futurism, or opinion pieces.
+- Generic AI agent frameworks without a self-improvement mechanism.
+- Promotional vendor pages.
+- Duplicate resources.
+- Broken links.
+- Tracking links.
+- Affiliate links.
+- URL shorteners.
+- Descriptions that do not match the linked source.
+- Long commentary.
+- Roadmaps.
+- Maintainer notes.
+
+## Resource Format
+
+Use this exact format:
+
+```markdown
+- [Name](URL) - Objective one-sentence description.
+```
+
+Descriptions must be neutral, factual, concise, specific, and no more than one sentence.
+
+## Pull Request Guidance
+
+- Add resources to the single best-fitting section.
+- Keep section ordering and heading names unchanged.
+- Check that the link works before submitting.
+- Check that the linked title matches the resource name.
+- Explain why the resource belongs in scope if the connection is not obvious.
+- Avoid broad reshuffling unless it fixes a clear classification problem.
+
+## Link and Description Quality Rules
+
+- Prefer canonical paper, proceedings, project, or lab links over summaries.
+- Remove tracking parameters from URLs.
+- Do not use URL shorteners or affiliate links.
+- Do not describe a resource as broader, newer, safer, or more conclusive than the linked source supports.
+- Do not add hype language, personal recommendations, or speculative claims.
+- Keep British English spelling where prose is required.
