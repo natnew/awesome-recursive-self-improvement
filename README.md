@@ -120,9 +120,6 @@ Recent surveys and overview papers that organise self-evolving agents, self-impr
 
 ## Related Awesome Lists
 
-- [Awesome AI Agents](https://github.com/e2b-dev/awesome-ai-agents) - Collects autonomous-agent projects and tools.
-- [Awesome LLM Agents](https://github.com/kaushikb11/awesome-llm-agents) - Curates LLM agent frameworks and development resources.
-- [Awesome Synthetic Data](https://github.com/gretelai/awesome-synthetic-data) - Collects resources on synthetic data generation and usage.
 - [Awesome Recursive Language Models](https://github.com/natnew/awesome-recursive-language-models) - Curates resources on recursive methods and architectures for language models.
 - [Awesome Physical AI](https://github.com/natnew/awesome-physical-ai) - Collects resources on embodied, robotic, and world-interacting AI systems.
 - [Awesome AgentOps](https://github.com/natnew/awesome-agentops) - Tracks operational practices and tooling for deploying, observing, and evaluating AI agents.
@@ -131,12 +128,9 @@ Recent surveys and overview papers that organise self-evolving agents, self-impr
 
 ## Contributing
 
-![We love Contributors](assets/We%20love%20Contributors%20%E2%80%94%20section%20title%20banner.png)
-
 Thrilled to have you here. Whether it is a quick typo fix, a fresh resource, a description polish, or a larger reorganisation, every contribution helps this list improve.
 
-Read the [contributing guide](CONTRIBUTING.md) or browse [good first issues](https://github.com/natnew/awesome-recursive-self-improvement/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22).
-
+Read the [contributing guide](CONTRIBUTING.md).
 
 
 ## Licence
