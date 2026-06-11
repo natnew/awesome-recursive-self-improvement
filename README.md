@@ -1,20 +1,24 @@
 # Awesome Recursive Self-Improvement
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Scope](https://img.shields.io/badge/scope-2022--present-blue)](CONTRIBUTING.md#scope)
+[![Updated](https://img.shields.io/github/last-commit/natnew/awesome-recursive-self-improvement?label=updated&color=brightgreen)](https://github.com/natnew/awesome-recursive-self-improvement/commits/main)
 
 > A curated list of recent resources on recursive self-improvement in AI: systems that improve through feedback, experience, self-evaluation, tool use, code evolution, automated curricula, test-time adaptation, and governed update loops.
 
 Recursive self-improvement in AI refers to systems that improve their own performance loops through feedback, experience, self-evaluation, environment interaction, tool use, code modification, synthetic data generation, or governed update mechanisms.
 
-
 ## Contents
 
+- [Field Map](#field-map)
+- [Reading Paths](#reading-paths)
 - [Surveys and Overviews](#surveys-and-overviews)
 - [Workshops and Research Agendas](#workshops-and-research-agendas)
 - [Self-Refinement and Reflection](#self-refinement-and-reflection)
 - [Test-Time Adaptation and Inference-Time Improvement](#test-time-adaptation-and-inference-time-improvement)
 - [Experience Learning and Memory](#experience-learning-and-memory)
 - [Self-Generated Data and Self-Rewarding Models](#self-generated-data-and-self-rewarding-models)
+- [Self-Play and Zero-Data Reasoning](#self-play-and-zero-data-reasoning)
 - [Recursive Decomposition and Automated Curricula](#recursive-decomposition-and-automated-curricula)
 - [Code Evolution and Algorithm Discovery](#code-evolution-and-algorithm-discovery)
 - [Self-Evolving Agents](#self-evolving-agents)
@@ -23,8 +27,53 @@ Recursive self-improvement in AI refers to systems that improve their own perfor
 - [Safety, Governance, and Limits](#safety-governance-and-limits)
 - [Related Awesome Lists](#related-awesome-lists)
 - [Contributing](#contributing)
-- [Contributors](#contributors)
 - [Licence](#licence)
+
+## Field Map
+
+How the sections of this list fit together as one improvement loop: a system acts or generates, the result is evaluated or verified, and the improvement lands somewhere durable before the loop repeats. Safety work bounds the whole loop rather than sitting inside it.
+
+```mermaid
+flowchart TD
+    entry["Entry points<br/>Surveys and Overviews<br/>Workshops and Research Agendas"] --> loop
+    subgraph loop["The recursive self-improvement loop"]
+        act["Act / Generate<br/>Self-Generated Data and Self-Rewarding Models<br/>Self-Play and Zero-Data Reasoning<br/>Recursive Decomposition and Automated Curricula<br/>Code Evolution and Algorithm Discovery<br/>Multimodal and Embodied Self-Improvement"]
+        evaluate["Evaluate / Verify<br/>Self-Refinement and Reflection<br/>Evaluation, Verification, and Benchmarks"]
+        update["Update weights, prompts, code, or memory<br/>Test-Time Adaptation and Inference-Time Improvement<br/>Experience Learning and Memory<br/>Self-Evolving Agents"]
+        act --> evaluate --> update --> act
+    end
+    safety["Safety, Governance, and Limits<br/>bounds the loop"] -.-> loop
+```
+
+## Reading Paths
+
+Three short routes through the list, from accessible to advanced. Each item names an entry below; the link jumps to its section.
+
+### New to the field
+
+1. [Self-Improvement of Large Language Models: A Technical Overview and Future Outlook](#surveys-and-overviews) — a closed-loop map of the whole field.
+2. [Welcome to the Era of Experience](#workshops-and-research-agendas) — the case for learning from experience rather than static data.
+3. [Self-Refine: Iterative Refinement with Self-Feedback](#self-refinement-and-reflection) — the simplest self-improvement loop.
+4. [Reflexion: Language Agents with Verbal Reinforcement Learning](#self-refinement-and-reflection) — reflection stored as memory across trials.
+5. [Self-Rewarding Language Models](#self-generated-data-and-self-rewarding-models) — the model as its own judge.
+6. [Constitutional AI: Harmlessness from AI Feedback](#self-generated-data-and-self-rewarding-models) — AI feedback at training scale.
+
+### Building self-improving systems
+
+1. [Voyager: An Open-Ended Embodied Agent with Large Language Models](#multimodal-and-embodied-self-improvement) — automatic curricula plus a growing skill library.
+2. [Agent Workflow Memory](#experience-learning-and-memory) — reusable workflows induced from past trajectories.
+3. [Self-Adapting Language Models](#self-evolving-agents) — models that direct their own updates.
+4. [Absolute Zero: Reinforced Self-play Reasoning with Zero Data](#self-play-and-zero-data-reasoning) — training without any external data.
+5. [Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents](#code-evolution-and-algorithm-discovery) — agents that modify their own code.
+6. [MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering](#evaluation-verification-and-benchmarks) — measuring whether the loop actually works.
+
+### Safety and limits
+
+1. [Safety is Essential for Responsible Open-Ended Systems](#safety-governance-and-limits) — framing the risks of open-ended improvement.
+2. [Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use](#safety-governance-and-limits) — when the loop optimises the wrong thing.
+3. [SHADE-Arena: Evaluating Sabotage and Monitoring in LLM Agents](#safety-governance-and-limits) — hidden objectives and monitoring.
+4. [RepliBench: Evaluating the Autonomous Replication Capabilities of Language Model Agents](#safety-governance-and-limits) — measuring autonomous replication.
+5. [AI models collapse when trained on recursively generated data](#safety-governance-and-limits) — the degenerate limit of recursive training.
 
 ## Surveys and Overviews
 
@@ -64,6 +113,10 @@ Recent surveys and overview papers that organise self-evolving agents, self-impr
 - [Investigate-Consolidate-Exploit: A General Strategy for Inter-Task Agent Self-Evolution](https://arxiv.org/abs/2401.13996) - Proposes an inter-task loop for agents to investigate tasks, consolidate reusable experience, and exploit it on future tasks.
 - [Agent Learning via Early Experience](https://arxiv.org/abs/2510.08558) - Studies how agents can learn from their own early rollouts before reinforcement learning with explicit rewards.
 - [Learning from Successful Experiences Improves LLM Agents](https://arxiv.org/abs/2505.00234) - Shows that accumulating and reusing successful self-generated trajectories can improve sequential decision-making agents.
+- [Agent Workflow Memory](https://arxiv.org/abs/2409.07429) - Induces reusable workflows from past agent trajectories and supplies them as memory to guide future tasks.
+- [Memp: Exploring Agent Procedural Memory](https://arxiv.org/abs/2508.06433) - Distils agent trajectories into procedural memory with strategies for building, retrieving, and updating it as experience accumulates.
+- [EvolveR: Self-Evolving LLM Agents through an Experience-Driven Lifecycle](https://arxiv.org/abs/2510.16079) - Closes the loop between offline distillation of strategic principles and online interaction in which agents retrieve and reinforce them.
+- [Rethinking Continual Experience Internalization for Self-Evolving LLM Agents](https://arxiv.org/abs/2606.04703) - Analyses why repeated experience-internalisation cycles destabilise agents and proposes principle-level experience with step-wise injection and off-policy distillation.
 
 ## Self-Generated Data and Self-Rewarding Models
 
@@ -72,6 +125,13 @@ Recent surveys and overview papers that organise self-evolving agents, self-impr
 - [Direct Nash Optimization: Teaching Language Models to Self-Improve with General Preferences](https://arxiv.org/abs/2404.03715) - Introduces an iterative preference-optimisation method with monotonic improvement over a strong oracle.
 - [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073) - Demonstrates critique, revision, and preference modelling using AI feedback instead of human labels for harmlessness training.
 - [WizardLM: Empowering Large Language Models to Follow Complex Instructions](https://arxiv.org/abs/2304.12244) - Introduces Evol-Instruct for generating increasingly complex instruction data from seed examples.
+
+## Self-Play and Zero-Data Reasoning
+
+- [Absolute Zero: Reinforced Self-play Reasoning with Zero Data](https://arxiv.org/abs/2505.03335) - Trains a single model to propose and solve its own code-grounded reasoning tasks through self-play without any external data.
+- [SPIRAL: Self-Play on Zero-Sum Games Incentivizes Reasoning via Multi-Agent Multi-Turn Reinforcement Learning](https://arxiv.org/abs/2506.24119) - Shows that multi-turn self-play on zero-sum games against improving copies of a model produces transferable reasoning gains.
+- [R-Zero: Self-Evolving Reasoning LLM from Zero Data](https://arxiv.org/abs/2508.05004) - Co-evolves a task-proposing challenger and a solver initialised from one base model so training data is generated entirely from scratch.
+- [SPICE: Self-Play In Corpus Environments Improves Reasoning](https://arxiv.org/abs/2510.24684) - Grounds adversarial self-play in a document corpus so a challenger can keep mining tasks at the frontier of the solver's ability.
 
 ## Recursive Decomposition and Automated Curricula
 
@@ -88,6 +148,9 @@ Recent surveys and overview papers that organise self-evolving agents, self-impr
 - [Self-Taught Optimizer: Recursively Self-Improving Code Generation](https://arxiv.org/abs/2310.02304) - Demonstrates a code-improver scaffold that recursively rewrites its own improvement procedure under a utility function.
 - [Language Agents as Optimizable Graphs](https://arxiv.org/abs/2402.16823) - Represents language-agent workflows as graphs whose prompts and connections can be automatically optimised.
 - [ReVeal: Self-Evolving Code Agents via Iterative Generation-Verification](https://arxiv.org/abs/2506.11442) - Improves code generation through reinforcement learning over iterative generation, self-verification, and tool-based evaluation.
+- [The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search](https://arxiv.org/abs/2504.08066) - Automates hypothesis generation, experimentation, and paper writing through agentic tree search with vision-language feedback on results.
+- [AlphaGo Moment for Model Architecture Discovery](https://arxiv.org/abs/2507.18074) - Runs an autonomous loop that proposes, trains, and analyses novel linear-attention architectures across thousands of experiments.
+- [Huxley-Gödel Machine: Human-Level Coding Agent Development by an Approximation of the Optimal Self-Improving Machine](https://arxiv.org/abs/2510.21614) - Guides the search over a coding agent's self-modifications using a lineage-based estimate of long-term improvement potential.
 
 ## Self-Evolving Agents
 
@@ -95,12 +158,15 @@ Recent surveys and overview papers that organise self-evolving agents, self-impr
 - [Self-Adapting Language Models](https://arxiv.org/abs/2506.10943) - Enables models to generate their own finetuning data and update directives for self-directed adaptation.
 - [Agentic Neural Networks: Self-Evolving Multi-Agent Systems via Textual Backpropagation](https://arxiv.org/abs/2506.09046) - Uses textual feedback to adapt multi-agent roles, prompts, and coordination patterns.
 - [STELLA: Self-Evolving LLM Agent for Biomedical Research](https://arxiv.org/abs/2507.02004) - Builds a biomedical agent that evolves reasoning templates and expands its tool library from experience.
+- [SkillWeaver: Web Agents can Self-Improve by Discovering and Honing Skills](https://arxiv.org/abs/2504.07079) - Grows a library of reusable skills that web agents discover, practise, and distil into callable APIs.
+- [Alita: Generalist Agent Enabling Scalable Agentic Reasoning with Minimal Predefinition and Maximal Self-Evolution](https://arxiv.org/abs/2505.20286) - Constructs, refines, and reuses task-related tool protocols at run time instead of relying on predefined tools and workflows.
 
 ## Multimodal and Embodied Self-Improvement
 
 - [Voyager: An Open-Ended Embodied Agent with Large Language Models](https://arxiv.org/abs/2305.16291) - Combines automatic curricula, an expanding skill library, and environment feedback for continual Minecraft learning.
 - [JARVIS-1: Open-World Multi-task Agents with Memory-Augmented Multimodal Language Models](https://arxiv.org/abs/2311.05997) - Uses multimodal memory and planning for open-world Minecraft agents that improve across tasks.
 - [SRUM: Fine-Grained Self-Rewarding for Unified Multimodal Models](https://arxiv.org/abs/2510.12784) - Applies self-rewarding post-training to unified multimodal models.
+- [SIMA 2: A Generalist Embodied Agent for Virtual Worlds](https://arxiv.org/abs/2512.04797) - Pairs a Gemini reasoning core with self-generated tasks and rewards so an embodied agent can learn new skills in new 3D worlds without human demonstrations.
 
 ## Evaluation, Verification, and Benchmarks
 
@@ -117,10 +183,12 @@ Recent surveys and overview papers that organise self-evolving agents, self-impr
 - [SHADE-Arena: Evaluating Sabotage and Monitoring in LLM Agents](https://arxiv.org/abs/2506.15740) - Tests whether agents can pursue hidden harmful objectives while evading monitoring.
 - [Safety is Essential for Responsible Open-Ended Systems](https://arxiv.org/abs/2502.04512) - Analyses safety risks and mitigation strategies for dynamic open-ended systems that can propagate and change over time.
 - [AI models collapse when trained on recursively generated data](https://www.nature.com/articles/s41586-024-07566-y) - Shows that recursively training generative models on model-generated data can cause distributional collapse.
+- [Evaluating Frontier Models for Dangerous Capabilities](https://arxiv.org/abs/2403.13793) - Pilots evaluations of frontier models for dangerous capabilities including self-proliferation and self-reasoning.
+- [RepliBench: Evaluating the Autonomous Replication Capabilities of Language Model Agents](https://arxiv.org/abs/2504.18565) - Decomposes autonomous replication into component capabilities and measures frontier language model agents on each.
+- [Zombie Agents: Persistent Control of Self-Evolving LLM Agents via Self-Reinforcing Injections](https://arxiv.org/abs/2602.15654) - Shows that one-time prompt injections can persist in the evolving memory of self-improving agents and survive per-session defences.
 
 ## Related Awesome Lists
 
-- [Awesome Recursive Language Models](https://github.com/natnew/awesome-recursive-language-models) - Curates resources on recursive methods and architectures for language models.
 - [Awesome Physical AI](https://github.com/natnew/awesome-physical-ai) - Collects resources on embodied, robotic, and world-interacting AI systems.
 - [Awesome AgentOps](https://github.com/natnew/awesome-agentops) - Tracks operational practices and tooling for deploying, observing, and evaluating AI agents.
 - [Awesome RL for Agents](https://github.com/natnew/awesome-rl-for-agents) - Curates reinforcement learning resources for agentic AI systems.
@@ -131,7 +199,6 @@ Recent surveys and overview papers that organise self-evolving agents, self-impr
 Thrilled to have you here. Whether it is a quick typo fix, a fresh resource, a description polish, or a larger reorganisation, every contribution helps this list improve.
 
 Read the [contributing guide](CONTRIBUTING.md).
-
 
 ## Licence
 

@@ -1,0 +1,21 @@
+{
+  "name": "awesome-recursive-self-improvement",
+  "version": "1.0.0",
+  "description": "A curated awesome-list of resources on recursive self-improvement in AI.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "lint": "markdownlint-cli2 \"**/*.md\" && prettier --check \"**/*.{md,json,yml,yaml}\"",
+    "format": "prettier --write \"**/*.{md,json,yml,yaml}\"",
+    "test": "npm run lint && node scripts/link-check.mjs",
+    "build": "node -e \"console.log('No build step: this is a curated awesome-list repository.')\""
+  },
+  "dependencies": {
+    "pino": "^9.5.0"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.15.0",
+    "prettier": "^3.4.2"
+  }
+}

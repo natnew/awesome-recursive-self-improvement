@@ -50,6 +50,16 @@ Use this exact format:
 
 Descriptions must be neutral, factual, concise, specific, and no more than one sentence.
 
+## Curation Tooling
+
+This repository ships AI tooling that encodes the rules above, so you can self-check an entry before opening a pull request:
+
+- `.github/skills/review-entry/SKILL.md` - a checklist that validates a proposed entry against every rule in this guide.
+- `.github/skills/scout-rsi-papers/SKILL.md` - the procedure used to find and triage new resources.
+- `.github/agents/curation-reviewer.agent.md` - an agent persona that applies the review checklist to entries or PR diffs.
+
+Running your entry through the review checklist first makes review faster for everyone.
+
 ## Pull Request Guidance
 
 - Add resources to the single best-fitting section.
@@ -66,4 +76,3 @@ Descriptions must be neutral, factual, concise, specific, and no more than one s
 - Do not use URL shorteners or affiliate links.
 - Do not describe a resource as broader, newer, safer, or more conclusive than the linked source supports.
 - Do not add hype language, personal recommendations, or speculative claims.
-- Keep British English spelling where prose is required.

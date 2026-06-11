@@ -1,0 +1,13 @@
+{
+  // Lint only files tracked by git: the maintainer's local AI-tooling
+  // libraries (agents/, skills/, plugins/, ...) are git-ignored by design
+  // and must not gate CI.
+  "gitignore": true,
+  "ignores": ["node_modules/**"],
+  "config": {
+    // Prose and agent prompt files use long lines; Prettier governs wrapping.
+    "MD013": false,
+    // Agent/skill prompt bodies may legitimately start with text after frontmatter.
+    "MD041": false,
+  },
+}

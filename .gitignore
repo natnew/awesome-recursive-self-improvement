@@ -216,3 +216,35 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Node
+node_modules/
+
+# agentic files
+agents/
+hooks/
+instructions/
+plugins/
+skills/
+workflows/
+
+# ai-report
+reports/
+
+# scripts: local maintenance scripts stay ignored, but the link checker is
+# committed because CI (.github/workflows/ci.yml) and `npm test` run it.
+scripts/*
+!scripts/link-check.mjs
+
+# claude
+.claude/
+
+# --- Curated, committed exceptions for AgentRC discoverability ---
+# The broad ignores above keep the maintainer's root libraries out of the repo.
+# These narrow negations re-include ONLY the committed .github/ subset (the CI
+# workflow plus a small, hand-picked set of agent/skill definitions) so that AI
+# coding agents and AgentRC can discover them. The root agents/, skills/,
+# workflows/, hooks/, instructions/ and plugins/ libraries stay fully ignored.
+!.github/workflows/
+!.github/agents/
+!.github/skills/

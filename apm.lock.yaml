@@ -1,0 +1,18 @@
+# PLACEHOLDER LOCKFILE — conforms to the OpenAPM v0.1 lockfile schema, but the
+# authoritative apm.lock.yaml (with resolved commits and content hashes) is produced by
+# `apm install`. Regenerate it in a trusted environment; CI runs `apm install` so the
+# committed lockfile stays in sync. Hashes are intentionally omitted here rather than
+# fabricated.
+lockfile_version: "2"
+generated_at: ""
+apm_version: ""
+dependencies:
+  - repo_url: https://github.com/microsoft/apm
+    registry_prefix: github:microsoft/apm/packages/apm-issue-autopilot
+    constraint: main
+    resolved_ref: main
+    package_type: skill
+    source: registry
+    is_dev: false
+mcp_servers:
+  - context7

@@ -1,0 +1,18 @@
+name: awesome-recursive-self-improvement
+version: 1.0.0
+description: Curated awesome-list of resources on recursive self-improvement in AI.
+includes: auto
+author: natnew
+license: MIT
+
+# Agent tooling is declared here by reference (Agent Package Manager) rather than
+# committing the maintainer's local agents/, skills/, hooks/, instructions/, plugins/
+# and workflows/ libraries (which stay git-ignored). `apm install` materializes these
+# into the consumer's agent folders; `apm.lock.yaml` pins resolved sources + hashes.
+dependencies:
+  apm:
+    - github:microsoft/apm/packages/apm-issue-autopilot#main
+  mcp:
+    - context7
+
+scripts: {}
