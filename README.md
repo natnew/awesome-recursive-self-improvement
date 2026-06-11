@@ -1,8 +1,8 @@
 # Awesome Recursive Self-Improvement
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![Scope](https://img.shields.io/badge/scope-2022--present-blue)](CONTRIBUTING.md#scope)
-[![Updated](https://img.shields.io/github/last-commit/natnew/awesome-recursive-self-improvement?label=updated&color=brightgreen)](https://github.com/natnew/awesome-recursive-self-improvement/commits/main)
+[![Scope](https://img.shields.io/badge/scope-awesome--recursive--self--improvement-blue)](CONTRIBUTING.md#scope)
+[![Updated](https://img.shields.io/badge/updated-June%202026-brightgreen)](https://github.com/natnew/awesome-recursive-self-improvement/commits/main)
 
 > A curated list of recent resources on recursive self-improvement in AI: systems that improve through feedback, experience, self-evaluation, tool use, code evolution, automated curricula, test-time adaptation, and governed update loops.
 
