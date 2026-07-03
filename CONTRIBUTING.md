@@ -12,7 +12,9 @@ It is not a general AGI, singularity, futurism, philosophy, or AI-agent director
 
 A resource must:
 
-- Be published or substantially updated from 2022 onwards.
+- Be published or substantially updated from 2022 onwards. (The Foundations section is a
+  deliberately bounded set of pre-2022 landmarks and is closed to new entries; do not propose
+  additions to it.)
 - Be directly relevant to AI recursive self-improvement.
 - Use a stable, accessible link.
 - Prefer primary sources.
@@ -45,10 +47,19 @@ Do not add:
 Use this exact format:
 
 ```markdown
-- [Name](URL) - Objective one-sentence description.
+- [Name](URL) (Venue Year) - Objective one-sentence description.
 ```
 
-Descriptions must be neutral, factual, concise, specific, and no more than one sentence.
+- The `(Venue Year)` tag names the publication venue and year the source states, for example
+  `(arXiv 2024)`, `(NeurIPS 2023)`, `(Nature 2024)`, `(ACL 2025)`. Omit the tag only when the
+  source gives no date, as with some organisation or project pages.
+- When an official implementation exists, add a `[[code](URL)]` link between the tag and the
+  description. Link only the official repository.
+- Descriptions must be neutral, factual, concise, specific, and no more than one sentence.
+
+Entries in the Frameworks and Implementations section are maintained open-source tools rather
+than papers: use the repository as the primary link, no venue tag, and do not duplicate a
+repository already linked as `[code]` from a paper entry.
 
 ## Curation Tooling
 
