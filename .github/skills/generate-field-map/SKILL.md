@@ -16,12 +16,13 @@ This skill regenerates both whenever the taxonomy or key entries change.
 
 The diagram depicts the canonical RSI feedback loop. Keep it to this shape — a compact loop, not an org chart:
 
-- **Act / Generate** — the system produces outputs, actions, code, or data. Covers: Self-Generated Data and Self-Rewarding Models; Recursive Decomposition and Automated Curricula; Code Evolution and Algorithm Discovery; Multimodal and Embodied Self-Improvement.
+- **Act / Generate** — the system produces outputs, actions, code, or data. Covers: Self-Generated Data and Self-Rewarding Models; Self-Play and Zero-Data Reasoning; Recursive Decomposition and Automated Curricula; Code Evolution and Algorithm Discovery; Automated AI Research and Scientific Discovery; Multimodal and Embodied Self-Improvement.
 - **Evaluate / Verify** — the system or an external check scores the result. Covers: Evaluation, Verification, and Benchmarks; Self-Refinement and Reflection.
-- **Update** — the improvement lands in weights, prompts, code, memory, or curricula. Covers: Experience Learning and Memory; Test-Time Adaptation and Inference-Time Improvement; Self-Evolving Agents.
+- **Update** — the improvement lands in weights, prompts, code, memory, or curricula. Covers: Experience Learning and Memory; Test-Time Adaptation and Inference-Time Improvement; Scaffold and Prompt Optimisation; Self-Evolving Agents.
 - The loop arrows back from Update to Act.
 - **Safety, Governance, and Limits** bounds the loop (a dashed link to the loop subgraph), not a stage in it.
-- **Surveys and Overviews** and **Workshops and Research Agendas** sit outside the loop as entry points.
+- **Frameworks and Implementations** is tooling for building the loop (a second dashed link), not a stage in it.
+- **Surveys and Overviews**, **Workshops and Research Agendas**, and **Foundations** sit outside the loop as entry points.
 
 Rules:
 

@@ -48,7 +48,7 @@ Run searches combining the theme terms with year qualifiers for recency:
    - the arXiv ID in any form (`abs/`, `pdf/`, versioned),
    - the paper or system title (search a distinctive word from it).
 4. **Canonicalise** the URL: prefer arXiv `abs/` pages over PDFs, prefer published proceedings over preprints when both exist, strip tracking parameters, never use shorteners.
-5. **Draft** a one-sentence description that is neutral, factual, specific, and matches the linked source. Use British English. Start with a verb where natural (matching list style: "Introduces…", "Surveys…", "Evaluates…").
+5. **Draft** a one-sentence description that is neutral, factual, specific, and matches the linked source. Use UK spelling. Start with a verb where natural (matching list style: "Introduces…", "Surveys…", "Evaluates…").
 6. **Place** each candidate in exactly one README section, with a one-line rationale.
 
 ## Output format
@@ -58,7 +58,7 @@ Run searches combining the theme terms with year qualifiers for recency:
 
 ### <Section name>
 
-- [Name](URL) - One-sentence description.
+- [Name](URL) (Venue Year) - One-sentence description.
   - Rationale: <why it is in scope and why this section>
   - Source checked: <arXiv / OpenReview / lab blog>, <year>
 ```
