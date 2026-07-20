@@ -224,6 +224,7 @@ Self-improvement loops grounded in visual, simulated, or embodied environments.
 - [JARVIS-1: Open-World Multi-task Agents with Memory-Augmented Multimodal Language Models](https://arxiv.org/abs/2311.05997) (arXiv 2023) [[code](https://github.com/CraftJarvis/JARVIS-1)] - Uses multimodal memory and planning for open-world Minecraft agents that improve across tasks.
 - [SRUM: Fine-Grained Self-Rewarding for Unified Multimodal Models](https://arxiv.org/abs/2510.12784) (arXiv 2025) - Applies self-rewarding post-training to unified multimodal models.
 - [SIMA 2: A Generalist Embodied Agent for Virtual Worlds](https://arxiv.org/abs/2512.04797) (arXiv 2025) - Pairs a Gemini reasoning core with self-generated tasks and rewards so an embodied agent can learn new skills in new 3D worlds without human demonstrations.
+- [Automating the Design of Embodied Agent Architectures](https://jianzhou0420.github.io/src/works/AgentCanvas/paper.html) (arXiv 2026) [[code](https://github.com/jianzhou0420/AgentCanvas)] - Introduces AgentCanvas and KDLoop for searching embodied agent architectures as editable typed graphs through coding-agent proposal, critique, experimentation, and distillation.
 
 ## Frameworks and Implementations
 
