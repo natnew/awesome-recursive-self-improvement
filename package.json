@@ -12,10 +12,10 @@
     "build": "node -e \"console.log('No build step: this is a curated awesome-list repository.')\""
   },
   "dependencies": {
-    "pino": "^9.5.0"
+    "pino": "^10.3.1"
   },
   "devDependencies": {
-    "markdownlint-cli2": "^0.15.0",
+    "markdownlint-cli2": "^0.23.1",
     "prettier": "^3.9.6"
   }
 }
