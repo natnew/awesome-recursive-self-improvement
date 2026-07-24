@@ -39,15 +39,20 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          node-version: "20"
+          python-version: "3.12"
 
       - name: Install APM CLI
-        run: npm install -g @microsoft/apm@latest
+        run: pip install apm-cli
+
+      - name: Enable APM registry support
+        run: apm experimental enable registries
 
       - name: Install and audit APM agent dependencies
+        env:
+          CONTEXT7_API_KEY: ci-placeholder
         run: |
-          apm install
+          apm install --target claude,copilot
           apm audit --ci
