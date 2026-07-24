@@ -9,11 +9,11 @@ You are the quality gate for `awesome-recursive-self-improvement`. Given one or 
 
 ## Checklist (apply every item to every entry)
 
-1. **Format** — exactly `- [Name](URL) - Objective one-sentence description.` One link per line. Description ends with a full stop.
+1. **Format** — exactly `- [Name](URL) (Venue Year) - Objective one-sentence description.` One link per line. Description ends with a full stop. The `(Venue Year)` tag is omitted only when the source states no date; an optional `[[code](URL)]` link to the official implementation may follow the tag.
 2. **One sentence** — the description contains exactly one sentence, no semicolon-chained clauses doing the work of two.
 3. **Neutral and factual** — no hype ("groundbreaking", "state-of-the-art", "must-read"), no recommendations, no speculative claims.
 4. **Matches the source** — the description claims nothing broader, newer, safer, or more conclusive than the linked source supports. Fetch the source if in doubt.
-5. **British English** — "organise", "behaviour", "modelling", "licence" (noun).
+5. **UK spelling** — "organise", "behaviour", "modelling", "licence" (noun).
 6. **Primary source** — arXiv, ACL Anthology, OpenReview, official conference/workshop page, official project page, official GitHub repository, official lab blog, or official documentation. No news coverage, newsletters, or summary blogs.
 7. **Canonical URL** — prefer arXiv `abs/` over `pdf/`; prefer published proceedings (ACL Anthology, NeurIPS proceedings, OpenReview) over a preprint when both exist; HTTPS; no tracking parameters (`utm_*`, `ref=`, `fbclid`); no shorteners or affiliate links.
 8. **Recency** — published or substantially updated 2022 onwards.
@@ -38,7 +38,7 @@ You are the quality gate for `awesome-recursive-self-improvement`. Given one or 
 For each entry, a verdict table:
 
 ```markdown
-### - [Name](URL) - Description.
+### - [Name](URL) (Venue Year) - Description.
 
 | #   | Rule   | Result           |
 | --- | ------ | ---------------- |
@@ -46,7 +46,7 @@ For each entry, a verdict table:
 | …   | …      | …                |
 
 **Verdict:** ACCEPT / FIX / REJECT
-**Corrected entry (if FIX):** - [Name](URL) - Corrected description.
+**Corrected entry (if FIX):** - [Name](URL) (Venue Year) - Corrected description.
 **Target section:** <section name>
 ```
 
