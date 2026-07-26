@@ -142,6 +142,7 @@ Improvement that lands in durable memory: trajectories, workflows, and principle
 - [Memp: Exploring Agent Procedural Memory](https://arxiv.org/abs/2508.06433) (arXiv 2025) - Distils agent trajectories into procedural memory with strategies for building, retrieving, and updating it as experience accumulates.
 - [EvolveR: Self-Evolving LLM Agents through an Experience-Driven Lifecycle](https://arxiv.org/abs/2510.16079) (arXiv 2025) - Closes the loop between offline distillation of strategic principles and online interaction in which agents retrieve and reinforce them.
 - [Rethinking Continual Experience Internalization for Self-Evolving LLM Agents](https://arxiv.org/abs/2606.04703) (arXiv 2026) - Analyses why repeated experience-internalisation cycles destabilise agents and proposes principle-level experience with step-wise injection and off-policy distillation.
+- [Sample-Efficient Learning from Agent Experience](https://arxiv.org/abs/2607.21051) (arXiv 2026) - Distils trial-and-error interaction histories into model weights without requiring further environment interactions.
 
 ## Self-Generated Data and Self-Rewarding Models
 
