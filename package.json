@@ -15,7 +15,7 @@
     "pino": "^10.3.1"
   },
   "devDependencies": {
-    "markdownlint-cli2": "^0.23.1",
+    "markdownlint-cli2": "^0.23.2",
     "prettier": "^3.9.6"
   }
 }
