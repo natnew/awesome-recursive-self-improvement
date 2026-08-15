@@ -206,6 +206,7 @@ Agents that update their own components — self-models, tools, skills, or updat
 - [Agentic Neural Networks: Self-Evolving Multi-Agent Systems via Textual Backpropagation](https://arxiv.org/abs/2506.09046) (arXiv 2025) - Uses textual feedback to adapt multi-agent roles, prompts, and coordination patterns.
 - [SkillWeaver: Web Agents can Self-Improve by Discovering and Honing Skills](https://arxiv.org/abs/2504.07079) (arXiv 2025) [[code](https://github.com/OSU-NLP-Group/SkillWeaver)] - Grows a library of reusable skills that web agents discover, practise, and distil into callable APIs.
 - [Alita: Generalist Agent Enabling Scalable Agentic Reasoning with Minimal Predefinition and Maximal Self-Evolution](https://arxiv.org/abs/2505.20286) (arXiv 2025) - Constructs, refines, and reuses task-related tool protocols at run time instead of relying on predefined tools and workflows.
+- [RewardHarness: Self-Evolving Agentic Post-Training](https://arxiv.org/abs/2605.08703) (arXiv 2026) [[code](https://github.com/TIGER-AI-Lab/RewardHarness)] - Evolves reusable scoring skills and tool prompts from preference feedback, retaining updates through held-out validation and rollback.
 
 ## Automated AI Research and Scientific Discovery
 
