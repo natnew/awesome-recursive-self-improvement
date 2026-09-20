@@ -234,6 +234,7 @@ Maintained open-source software for building self-improvement loops. Research co
 - [TextGrad](https://github.com/zou-group/textgrad) - Library that optimises prompts, outputs, and code in compound AI systems by backpropagating textual feedback.
 - [OpenEvolve](https://github.com/codelion/openevolve) - Open-source evolutionary coding agent that iteratively improves programs using LLM-proposed mutations and automated evaluation.
 - [EvoAgentX](https://github.com/EvoAgentX/EvoAgentX) - Open-source platform for generating, executing, and evolutionarily optimising agent workflows.
+- [Gear](https://github.com/rsi-gear/gear) - Uses execution traces and benchmark feedback to iteratively optimise agent prompts, tools, and workflows, retaining versioned harness candidates for later rounds.
 
 ## Evaluation, Verification, and Benchmarks
 
