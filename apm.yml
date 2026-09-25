@@ -11,7 +11,11 @@ license: MIT
 # into the consumer's agent folders; `apm.lock.yaml` pins resolved sources + hashes.
 dependencies:
   apm:
-    - microsoft/apm/packages/apm-issue-autopilot#main
+    # Pinned to the microsoft/apm v0.32.0 release commit so upstream package moves on
+    # main cannot break CI. Bump the SHA deliberately when updating these packages.
+    - microsoft/apm/packages/autopilot/autopilot-issue-triage-scheduler#f0509d75f2b35d11c8e983456e90e101768f1ecc
+    - microsoft/apm/packages/autopilot/autopilot-issue-triage-worker#f0509d75f2b35d11c8e983456e90e101768f1ecc
+    - microsoft/apm/packages/autopilot/autopilot-comment#f0509d75f2b35d11c8e983456e90e101768f1ecc
   mcp:
     - context7
 
