@@ -207,7 +207,7 @@ Agents that update their own components — self-models, tools, skills, or updat
 - [Agentic Neural Networks: Self-Evolving Multi-Agent Systems via Textual Backpropagation](https://arxiv.org/abs/2506.09046) (arXiv 2025) - Uses textual feedback to adapt multi-agent roles, prompts, and coordination patterns.
 - [SkillWeaver: Web Agents can Self-Improve by Discovering and Honing Skills](https://arxiv.org/abs/2504.07079) (arXiv 2025) [[code](https://github.com/OSU-NLP-Group/SkillWeaver)] - Grows a library of reusable skills that web agents discover, practise, and distil into callable APIs.
 - [Alita: Generalist Agent Enabling Scalable Agentic Reasoning with Minimal Predefinition and Maximal Self-Evolution](https://arxiv.org/abs/2505.20286) (arXiv 2025) - Constructs, refines, and reuses task-related tool protocols at run time instead of relying on predefined tools and workflows.
-- [RewardHarness: Self-Evolving Agentic Post-Training](https://arxiv.org/abs/2605.08703) (arXiv 2026) [[code](https://github.com/TIGER-AI-Lab/RewardHarness)] - Evolves reusable scoring skills and tool prompts from preference feedback, retaining updates through held-out validation and rollback.
+- [RewardHarness: Self-Evolving Agentic Post-Training](https://arxiv.org/abs/2605.08703) (arXiv 2026) [[code](https://github.com/TIGER-AI-Lab/RewardHarness)] - Evolves a library of scoring rubrics and tool prompts from a small set of image-editing preference demonstrations, keeping updates that pass held-out validation and rolling back regressions.
 
 ## Automated AI Research and Scientific Discovery
 
@@ -236,7 +236,7 @@ Maintained open-source software for building self-improvement loops. Research co
 - [TextGrad](https://github.com/zou-group/textgrad) - Library that optimises prompts, outputs, and code in compound AI systems by backpropagating textual feedback.
 - [OpenEvolve](https://github.com/codelion/openevolve) - Open-source evolutionary coding agent that iteratively improves programs using LLM-proposed mutations and automated evaluation.
 - [EvoAgentX](https://github.com/EvoAgentX/EvoAgentX) - Open-source platform for generating, executing, and evolutionarily optimising agent workflows.
-- [Gear](https://github.com/rsi-gear/gear) - Uses execution traces and benchmark feedback to iteratively optimise agent prompts, tools, and workflows, retaining versioned harness candidates for later rounds.
+- [Gear](https://github.com/rsi-gear/gear) - Open-source framework that optimises agent prompts, tools, and workflows from execution traces and benchmark feedback, keeping versioned harness candidates across rounds.
 
 ## Evaluation, Verification, and Benchmarks
 
