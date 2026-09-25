@@ -11,7 +11,9 @@ license: MIT
 # into the consumer's agent folders; `apm.lock.yaml` pins resolved sources + hashes.
 dependencies:
   apm:
-    - microsoft/apm/packages/apm-issue-autopilot#main
+    - microsoft/apm/packages/autopilot/autopilot-issue-triage-scheduler#main
+    - microsoft/apm/packages/autopilot/autopilot-issue-triage-worker#main
+    - microsoft/apm/packages/autopilot/autopilot-comment#main
   mcp:
     - context7
 

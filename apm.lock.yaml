@@ -8,7 +8,21 @@ generated_at: ""
 apm_version: ""
 dependencies:
   - repo_url: https://github.com/microsoft/apm
-    registry_prefix: github:microsoft/apm/packages/apm-issue-autopilot
+    registry_prefix: github:microsoft/apm/packages/autopilot/autopilot-issue-triage-scheduler
+    constraint: main
+    resolved_ref: main
+    package_type: skill
+    source: registry
+    is_dev: false
+  - repo_url: https://github.com/microsoft/apm
+    registry_prefix: github:microsoft/apm/packages/autopilot/autopilot-issue-triage-worker
+    constraint: main
+    resolved_ref: main
+    package_type: skill
+    source: registry
+    is_dev: false
+  - repo_url: https://github.com/microsoft/apm
+    registry_prefix: github:microsoft/apm/packages/autopilot/autopilot-comment
     constraint: main
     resolved_ref: main
     package_type: skill
