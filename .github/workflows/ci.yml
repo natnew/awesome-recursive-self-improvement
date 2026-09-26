@@ -28,6 +28,12 @@ jobs:
       - name: Lint and format check
         run: npm run lint
 
+      - name: Entry-contract lint
+        run: npm run lint:readme
+
+      - name: Linter tests
+        run: node --test scripts/lint-readme.test.mjs
+
       - name: Link check
         run: node scripts/link-check.mjs
 

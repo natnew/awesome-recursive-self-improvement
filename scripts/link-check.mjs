@@ -1,25 +1,32 @@
 // Maintenance script: extract every Markdown link from the repo's *.md files and report
-// them, with structured logging via pino. Run with `node scripts/link-check.mjs`.
+// them. Run with `node scripts/link-check.mjs`.
 //
 // Network checking is opt-in (set CHECK_LINKS=1) so the default `npm test` stays fast and
 // offline-friendly; in that mode the script validates that links are well-formed http(s) URLs.
 import { readdir, readFile } from "node:fs/promises";
 import { join, relative } from "node:path";
-import pino from "pino";
 
-const log = pino({ name: "link-check", level: process.env.LOG_LEVEL ?? "info" });
+/** One JSON line per event, so CI logs stay greppable without a logging dependency. */
+const log = Object.fromEntries(
+  ["info", "warn", "error"].map((level) => [
+    level,
+    (fields, msg) =>
+      console[level === "info" ? "log" : level](JSON.stringify({ level, msg, ...fields })),
+  ]),
+);
 
 const ROOT = process.cwd();
-const IGNORE_DIRS = new Set([
-  "node_modules",
-  ".git",
+// Skipped at any depth.
+const IGNORE_ANYWHERE = new Set(["node_modules", ".git"]);
+// The maintainer's git-ignored local AI-tooling folders. Skipped only at the repository root,
+// so the committed .github/agents/ and .github/skills/ are still checked.
+const IGNORE_AT_ROOT = new Set([
   "agents",
   "skills",
   "hooks",
   "instructions",
   "plugins",
   "workflows",
-  "reports",
 ]);
 const LINK_RE = /\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/g;
 
@@ -29,7 +36,8 @@ async function collectMarkdown(dir) {
   const files = [];
   for (const entry of entries) {
     if (entry.isDirectory()) {
-      if (IGNORE_DIRS.has(entry.name)) continue;
+      if (IGNORE_ANYWHERE.has(entry.name)) continue;
+      if (dir === ROOT && IGNORE_AT_ROOT.has(entry.name)) continue;
       files.push(...(await collectMarkdown(join(dir, entry.name))));
     } else if (entry.isFile() && entry.name.endsWith(".md")) {
       files.push(join(dir, entry.name));

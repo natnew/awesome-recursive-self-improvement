@@ -71,7 +71,7 @@ This repository ships AI tooling that encodes the rules above, so you can self-c
 - `.github/skills/scout-rsi-papers/SKILL.md` - the procedure used to find and triage new resources.
 - `.github/agents/curation-reviewer.agent.md` - an agent persona that applies the review checklist to entries or PR diffs.
 
-Running your entry through the review checklist first makes review faster for everyone.
+Running your entry through the review checklist first makes review faster for everyone. To check the mechanical rules locally, run `npm ci` and then `npm test`. The entry-contract linter reports the line and rule for any format, recency, duplicate, or link-hygiene problem, and CI runs the same checks on every pull request.
 
 ## Pull Request Guidance
 

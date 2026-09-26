@@ -235,6 +235,8 @@ reports/
 # committed because CI (.github/workflows/ci.yml) and `npm test` run it.
 scripts/*
 !scripts/link-check.mjs
+!scripts/lint-readme.mjs
+!scripts/lint-readme.test.mjs
 
 # claude
 .claude/

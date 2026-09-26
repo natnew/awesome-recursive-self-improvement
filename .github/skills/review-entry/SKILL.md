@@ -29,6 +29,7 @@ You are the quality gate for `awesome-recursive-self-improvement`. Given one or 
 13. **Link works** — the URL resolves. Spot-check it, and run the repo gate:
 
     ```bash
+    npm run lint:readme                    # entry contract: rules 1, 7, 8 and 11 mechanically
     node scripts/link-check.mjs            # offline format check
     CHECK_LINKS=1 node scripts/link-check.mjs   # network check
     ```

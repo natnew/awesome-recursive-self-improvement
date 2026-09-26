@@ -27,14 +27,15 @@ These `.github/skills` files are procedures to read and follow. They are not ins
 
 ```bash
 npm ci                                      # install (Node 20, as in CI)
-npm test                                    # quality gate: markdownlint + Prettier check + offline link-format check
+npm test                                    # quality gate: markdownlint, Prettier, entry-contract lint + its tests, offline link format
+npm run lint:readme                         # entry-contract lint alone: format, recency, duplicates, link hygiene, navigation sync
 npx prettier --write <file>                 # format only the files you touched
 npm run lint:awesome                        # awesome-lint (pinned) over README.md; needs network
 CHECK_LINKS=1 node scripts/link-check.mjs   # network check; not run in CI; 403/405/429 are logged as inconclusive
-grep -n "<arxiv-id>\|<title-word>" README.md   # duplicate check (a bare arXiv ID catches abs/, pdf/ and vN forms)
+grep -n "<arxiv-id>\|<title-word>" README.md   # duplicate check by title; lint:readme already catches repeated URLs and arXiv IDs
 ```
 
-CI (`.github/workflows/ci.yml`, on every PR and on pushes to `main`) runs `npm run lint`, the offline link check, `npm run lint:awesome`, and an `apm install` + `apm audit` job over `apm.yml`/`apm.lock.yaml`. `npm run format` rewrites every Markdown, JSON, and YAML file in the repo, so it counts as a broad sweep. Use it only when asked to.
+CI (`.github/workflows/ci.yml`, on every PR and on pushes to `main`) runs `npm run lint`, `npm run lint:readme` and its tests, the offline link check, `npm run lint:awesome`, and an `apm install` + `apm audit` job over `apm.yml`/`apm.lock.yaml`. `npm run format` rewrites every Markdown, JSON, and YAML file in the repo, so it counts as a broad sweep. Use it only when asked to.
 
 ## Invariants
 
@@ -43,6 +44,7 @@ CI (`.github/workflows/ci.yml`, on every PR and on pushes to `main`) runs `npm r
 - **Frameworks and Implementations:** link the repository, with no venue tag. Never duplicate a repo already linked as `[code]` elsewhere.
 - **Ordering:** sections use no single global order. Match the local pattern (usually append) and never reshuffle existing entries.
 - **Structure is frozen without approval.** Headings, Contents, badges, section intros, the Field Map, and Reading Paths are protected (full list in `AGENTS.md`). A section add, split, merge, or rename needs maintainer approval first. After approval, follow `generate-field-map` so the Field Map and Reading Paths stay in sync. Don't hand-write that output.
+- **Mechanical rules are enforced, not remembered:** `scripts/lint-readme.mjs` fails CI on entry-format, recency, Foundations, link-hygiene, duplicate, and navigation-sync violations. When a rule in `CONTRIBUTING.md` changes, change the linter and its tests in the same PR. Scope, neutrality, and fidelity to the source remain review judgements.
 - **Don't edit tooling unless asked:** `apm.yml`, `apm.lock.yaml`, `package*.json`, `scripts/`, and the git-ignored root `agents/`, `skills/`, `hooks/`, `instructions/`, `plugins/`, `workflows/`.
 - **Only edit when asked:** review and triage requests produce a recommendation, not a README edit.
 

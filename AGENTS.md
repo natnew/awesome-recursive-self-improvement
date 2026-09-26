@@ -74,7 +74,8 @@ Do not assume the generic awesome-list pattern overrides this repository's exist
 - New categories, section splits, or section merges are handled separately from single-entry work, and belong to the taxonomy curator.
 - The Field Map diagram and Reading Paths must stay in sync with any section change; use the `generate-field-map` skill rather than hand-writing replacements.
 - Frameworks and Implementations entries are maintained open-source tools: use the repository as the primary link, no venue tag, and do not duplicate a repository already linked as `[code]` from a paper entry.
-- This repository has no runtime service. `npm test` (lint + link check) is the local quality gate; CI also runs `npm run lint:awesome` so the README keeps passing `awesome-lint`.
+- This repository has no runtime service. `npm test` is the local quality gate: markdownlint, Prettier, the entry-contract linter (`scripts/lint-readme.mjs`) and its tests, and the link-format check. CI also runs `npm run lint:awesome` so the README keeps passing `awesome-lint`.
+- The entry-contract linter enforces the mechanical rules (format, recency, closed Foundations, link hygiene, duplicate URLs and arXiv IDs, and Contents / Field Map / Reading Paths sync). A passing linter does not mean an entry is in scope; judgement rules still need review.
 
 ## Scope Rules
 
