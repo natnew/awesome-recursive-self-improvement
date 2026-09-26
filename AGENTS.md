@@ -68,13 +68,13 @@ Do not assume the generic awesome-list pattern overrides this repository's exist
 - Main list sections are bullet lists, one link per line. Match the local section style exactly.
 - Some sections include explanatory text before entries (Field Map, Reading Paths, section intros). Preserve it.
 - A resource must be published or substantially updated from **2022 onwards**. The **Foundations** section is a bounded set of pre-2022 landmarks and is **closed** — never add to it.
-- Entries use the exact format `- [Name](URL) (Venue Year) - Objective one-sentence description.`, with an optional `[[code](URL)]` link between the venue tag and the description.
+- Entries use the exact format `- [Name](URL) (Venue Year) - Objective one-sentence description.`, with an optional `\[[code](URL)\]` link (backslashes included) between the venue tag and the description.
 - The `(Venue Year)` tag is written as the source states it (`(arXiv 2024)`, `(NeurIPS 2023)`, `(Nature 2024)`), and is omitted only when the source gives no date.
 - New entries are added in the section's existing ordering style; do not reshuffle existing entries.
 - New categories, section splits, or section merges are handled separately from single-entry work, and belong to the taxonomy curator.
 - The Field Map diagram and Reading Paths must stay in sync with any section change; use the `generate-field-map` skill rather than hand-writing replacements.
 - Frameworks and Implementations entries are maintained open-source tools: use the repository as the primary link, no venue tag, and do not duplicate a repository already linked as `[code]` from a paper entry.
-- This repository has no runtime service; `npm test` (lint + link check) is the quality gate.
+- This repository has no runtime service. `npm test` (lint + link check) is the local quality gate; CI also runs `npm run lint:awesome` so the README keeps passing `awesome-lint`.
 
 ## Scope Rules
 
@@ -130,7 +130,7 @@ Infer format from the surrounding section before editing.
 - Preserve the Contents list and its anchors.
 - Preserve badges, the Field Map diagram, Reading Paths, section intros, and other protected areas.
 - Match the section's existing format: a bullet list, one link per line.
-- Use the exact entry format, including the `(Venue Year)` tag and optional `[[code](URL)]` link.
+- Use the exact entry format, including the `(Venue Year)` tag and optional `\[[code](URL)\]` link.
 - Use HTTPS links where available.
 - Use canonical names.
 - Keep descriptions to one neutral sentence.

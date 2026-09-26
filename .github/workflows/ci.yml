@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
 
 permissions:
   contents: read
@@ -31,6 +30,12 @@ jobs:
 
       - name: Link check
         run: node scripts/link-check.mjs
+
+      - name: Awesome lint
+        env:
+          # awesome-lint reads the repository description, topics and licence from the GitHub API.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run lint:awesome
 
   apm-audit:
     name: APM install & audit

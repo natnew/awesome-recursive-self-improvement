@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "markdownlint-cli2 \"**/*.md\" && prettier --check \"**/*.{md,json,yml,yaml}\"",
+    "lint:awesome": "npx --yes awesome-lint@2.3.0 README.md",
     "format": "prettier --write \"**/*.{md,json,yml,yaml}\"",
     "test": "npm run lint && node scripts/link-check.mjs",
     "build": "node -e \"console.log('No build step: this is a curated awesome-list repository.')\""

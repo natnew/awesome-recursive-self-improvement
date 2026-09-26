@@ -48,13 +48,15 @@ Use this exact format:
 
 ```markdown
 - [Name](URL) (Venue Year) - Objective one-sentence description.
+- [Name](URL) (Venue Year) \[[code](URL)\] - Objective one-sentence description.
 ```
 
 - The `(Venue Year)` tag names the publication venue and year the source states, for example
   `(arXiv 2024)`, `(NeurIPS 2023)`, `(Nature 2024)`, `(ACL 2025)`. Omit the tag only when the
   source gives no date, as with some organisation or project pages.
-- When an official implementation exists, add a `[[code](URL)]` link between the tag and the
-  description. Link only the official repository.
+- When an official implementation exists, add a `\[[code](URL)\]` link between the tag and the
+  description. Link only the official repository. The backslashes are required: they render as
+  `[code]` on GitHub, and without them `awesome-lint` reads the brackets as an undefined reference.
 - Descriptions must be neutral, factual, concise, specific, and no more than one sentence.
 
 Entries in the Frameworks and Implementations section are maintained open-source tools rather

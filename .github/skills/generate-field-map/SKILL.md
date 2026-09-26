@@ -41,14 +41,15 @@ Three tracks, each 5–7 links **to entries that already exist in the list**, or
 
 Rules:
 
-- Each item is `1. [Name](#section-anchor) — why it is on this track (one short clause).` linking to the README **section anchor**, with the name matching the entry exactly so readers can find it.
-- Never link to a resource that is not in the list; never invent a track item.
-- After regenerating, verify every anchor matches a heading in `README.md` (GitHub anchors: lowercase, spaces → hyphens, punctuation dropped).
+- Each track is a Markdown table with the columns `Step | Entry | Section | Why`. `Entry` is the entry name exactly as listed, `Section` is the heading that holds it, and `Why` is one short sentence on why it is on this track.
+- Tracks are tables, not linked lists, because `awesome-lint` treats every list item as a list entry and flags a second link to the same anchor or URL as a duplicate.
+- Never name a resource that is not in the list; never invent a track item.
+- After regenerating, verify every `Entry` matches an entry name in `README.md` and every `Section` matches a heading exactly.
 
 ## Process
 
 1. Read the current `README.md` section list and the existing Field Map / Reading Paths blocks.
 2. Re-derive the stage→section mapping and rebuild the Mermaid block.
-3. Confirm every reading-path entry still exists in the list (titles can change when URLs are swapped to venue versions); fix names and anchors.
+3. Confirm every reading-path entry still exists in the list (titles can change when URLs are swapped to venue versions); fix names and section columns.
 4. Replace the two blocks in place; touch nothing else in the README.
-5. Run `npm run lint` and confirm the Mermaid block renders.
+5. Run `npm test` and `npx awesome-lint README.md`, and confirm the Mermaid block renders.

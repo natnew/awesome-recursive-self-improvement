@@ -29,15 +29,16 @@ These `.github/skills` files are procedures to read and follow. They are not ins
 npm ci                                      # install (Node 20, as in CI)
 npm test                                    # quality gate: markdownlint + Prettier check + offline link-format check
 npx prettier --write <file>                 # format only the files you touched
+npm run lint:awesome                        # awesome-lint (pinned) over README.md; needs network
 CHECK_LINKS=1 node scripts/link-check.mjs   # network check; not run in CI; 403/405/429 are logged as inconclusive
 grep -n "<arxiv-id>\|<title-word>" README.md   # duplicate check (a bare arXiv ID catches abs/, pdf/ and vN forms)
 ```
 
-CI (`.github/workflows/ci.yml`, on PRs to `main`) runs `npm run lint`, the offline link check, and an `apm install` + `apm audit` job over `apm.yml`/`apm.lock.yaml`. `npm run format` rewrites every Markdown, JSON, and YAML file in the repo, so it counts as a broad sweep. Use it only when asked to.
+CI (`.github/workflows/ci.yml`, on every PR and on pushes to `main`) runs `npm run lint`, the offline link check, `npm run lint:awesome`, and an `apm install` + `apm audit` job over `apm.yml`/`apm.lock.yaml`. `npm run format` rewrites every Markdown, JSON, and YAML file in the repo, so it counts as a broad sweep. Use it only when asked to.
 
 ## Invariants
 
-- **Entry format:** `- [Name](URL) (Venue Year) [[code](URL)] - One neutral sentence.` The venue tag is as the source states it. `[[code]]` is optional and must point to the official repository.
+- **Entry format:** `- [Name](URL) (Venue Year) \[[code](URL)\] - One neutral sentence.` The venue tag is as the source states it. The code link is optional, must point to the official repository, and keeps its backslashes so `awesome-lint` passes.
 - **Recency:** 2022 onwards. **Foundations is closed**: never add to it.
 - **Frameworks and Implementations:** link the repository, with no venue tag. Never duplicate a repo already linked as `[code]` elsewhere.
 - **Ordering:** sections use no single global order. Match the local pattern (usually append) and never reshuffle existing entries.
