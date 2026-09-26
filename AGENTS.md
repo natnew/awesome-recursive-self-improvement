@@ -43,11 +43,12 @@ Before reviewing or editing, read in this order:
 
 1. `README.md` — scope, taxonomy, Field Map, Reading Paths, formatting, protected areas, and existing examples
 2. `CONTRIBUTING.md` — inclusion and exclusion criteria, entry format, link and description rules
-3. `CLAUDE.md` — the maintainer contract and decision priority, and Claude-specific review format
-4. `.github/skills/review-entry/SKILL.md` — the entry-review checklist with concrete commands
-5. `.github/skills/scout-rsi-papers/SKILL.md` — the scouting and triage procedure, if sourcing candidates
-6. `.github/agents/` — curation, paper-scout, and taxonomy agent personas, where relevant
-7. Recent issues and merged PRs, where available, for maintainer precedent
+3. `.github/skills/review-entry/SKILL.md` — the entry-review checklist with concrete commands
+4. `.github/skills/scout-rsi-papers/SKILL.md` — the scouting and triage procedure, if sourcing candidates
+5. `.github/agents/` — curation, paper-scout, and taxonomy agent personas, where relevant
+6. Recent issues and merged PRs, where available, for maintainer precedent
+
+Tool-specific entry points only route here: `CLAUDE.md` for Claude Code and `.github/copilot-instructions.md` for GitHub Copilot. When they and this file disagree, `CONTRIBUTING.md` and this file win.
 
 Do not assume the generic awesome-list pattern overrides this repository's existing structure.
 

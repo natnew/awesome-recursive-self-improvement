@@ -21,7 +21,7 @@ When sources disagree, the file higher in this list wins. Read these files rathe
 | `.github/skills/generate-field-map/SKILL.md` | Regenerating the Field Map and Reading Paths after an approved section change.                                                                                    |
 | `.github/agents/*.agent.md`                  | Personas: curation reviewer, paper scout, taxonomy curator.                                                                                                       |
 
-These `.github/skills` files are procedures to read and follow. They are not installed Claude Code skills, and `.claude/` is git-ignored. `.github/copilot-instructions.md` is stale: it says entries are alphabetised, which they are not. Don't take rules from it.
+These `.github/skills` files are procedures to read and follow. They are not installed Claude Code skills, and `.claude/` is git-ignored. `.github/copilot-instructions.md` is only a pointer to `AGENTS.md` for Copilot; it holds no rules of its own.
 
 ## Commands
 
