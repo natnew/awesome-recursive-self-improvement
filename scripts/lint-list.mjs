@@ -125,6 +125,13 @@ export function lint(markdown) {
       ) {
         report(line, "dated source needs a (Venue Year) tag");
       }
+      const arxivUrl = /^https:\/\/arxiv\.org\/abs\//.test(url);
+      if (venue === "arXiv" && !arxivUrl) {
+        report(line, "an (arXiv Year) tag must link the arXiv abs/ page");
+      }
+      if (arxivUrl && venue && venue !== "arXiv") {
+        report(line, `link the published ${venue} version, or tag the arXiv link (arXiv Year)`);
+      }
       if (year) {
         const y = Number(year);
         if (section.name === FOUNDATIONS.name && y >= RECENCY_YEAR) {

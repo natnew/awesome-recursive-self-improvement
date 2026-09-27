@@ -37,18 +37,15 @@ function assertFlags(markdown, pattern) {
   );
 }
 
-const SELF_REFINE =
-  "- [Self-Refine: Iterative Refinement with Self-Feedback](https://arxiv.org/abs/2303.17651)";
+const LADDER =
+  "- [LADDER: Self-Improving LLMs Through Recursive Problem Decomposition](https://arxiv.org/abs/2503.00735)";
 
 test("the README passes", () => {
   assert.deepEqual(lint(readme), []);
 });
 
 test("entry format", () => {
-  assertFlags(
-    mutate(SELF_REFINE, "- Self-Refine https://arxiv.org/abs/2303.17651"),
-    /does not match/,
-  );
+  assertFlags(mutate(LADDER, "- LADDER https://arxiv.org/abs/2503.00735"), /does not match/);
 });
 
 test("description is one capitalised sentence with a full stop", () => {
@@ -62,37 +59,48 @@ test("description is one capitalised sentence with a full stop", () => {
 
 test("URLs are canonical", () => {
   assertFlags(
-    mutate("https://arxiv.org/abs/2303.17651", "https://arxiv.org/pdf/2303.17651"),
+    mutate("https://arxiv.org/abs/2503.00735", "https://arxiv.org/pdf/2503.00735"),
     /abs\/ page/,
   );
   assertFlags(
-    mutate("https://arxiv.org/abs/2303.17651", "http://arxiv.org/abs/2303.17651"),
+    mutate("https://arxiv.org/abs/2503.00735", "http://arxiv.org/abs/2503.00735"),
     /HTTPS/,
   );
   assertFlags(
-    mutate("https://arxiv.org/abs/2303.17651", "https://arxiv.org/abs/2303.17651?utm_source=x"),
+    mutate("https://arxiv.org/abs/2503.00735", "https://arxiv.org/abs/2503.00735?utm_source=x"),
     /tracking/,
   );
-  assertFlags(mutate("https://arxiv.org/abs/2303.17651", "https://bit.ly/abc"), /shortener/);
+  assertFlags(mutate("https://arxiv.org/abs/2503.00735", "https://bit.ly/abc"), /shortener/);
+});
+
+test("arXiv tags and arXiv links go together", () => {
+  assertFlags(mutate(`${LADDER} (arXiv 2025)`, `${LADDER} (ICLR 2025)`), /published ICLR version/);
+  assertFlags(
+    mutate(
+      "91edff07232fb1b55a505a9e9f6c0ff3-Abstract-Conference.html) (NeurIPS 2023)",
+      "91edff07232fb1b55a505a9e9f6c0ff3-Abstract-Conference.html) (arXiv 2023)",
+    ),
+    /must link the arXiv abs\/ page/,
+  );
 });
 
 test("dated sources carry a venue tag", () => {
-  assertFlags(mutate(`${SELF_REFINE} (arXiv 2023)`, SELF_REFINE), /Venue Year/);
+  assertFlags(mutate(`${LADDER} (arXiv 2025)`, LADDER), /Venue Year/);
 });
 
 test("duplicates are caught by URL, arXiv ID, and name", () => {
   assertFlags(
-    mutate("https://arxiv.org/abs/2409.12917", "https://arxiv.org/abs/2303.17651"),
+    mutate("https://arxiv.org/abs/2511.00602", "https://arxiv.org/abs/2503.00735"),
     /duplicate (URL|arXiv)/,
   );
   assertFlags(
-    mutate("https://arxiv.org/abs/2409.12917", "https://arxiv.org/abs/2303.17651v2"),
-    /duplicate arXiv ID 2303\.17651/,
+    mutate("https://arxiv.org/abs/2511.00602", "https://arxiv.org/abs/2503.00735v2"),
+    /duplicate arXiv ID 2503\.00735/,
   );
   assertFlags(
     mutate(
-      "[Training Language Models to Self-Correct via Reinforcement Learning]",
-      "[Self-Refine: Iterative Refinement with Self-Feedback]",
+      "[OpenSIR: Open-Ended Self-Improving Reasoner]",
+      "[LADDER: Self-Improving LLMs Through Recursive Problem Decomposition]",
     ),
     /duplicate entry name/,
   );
@@ -118,7 +126,7 @@ test("Frameworks entries are repositories not already linked as [code]", () => {
 
 test("Foundations is closed and the recency floor holds elsewhere", () => {
   const goedel = "(arXiv 2003)";
-  assertFlags(mutate(`${SELF_REFINE} (arXiv 2023)`, `${SELF_REFINE} (arXiv 2021)`), /2022 onwards/);
+  assertFlags(mutate(`${LADDER} (arXiv 2025)`, `${LADDER} (arXiv 2021)`), /2022 onwards/);
   assertFlags(mutate(goedel, "(arXiv 2023)"), /pre-2022/);
   const extra =
     "- [Extra Landmark](https://arxiv.org/abs/1111.11111) (arXiv 2011) - Adds a sixth landmark.\n";
