@@ -27,14 +27,15 @@ These `.github/skills` files are procedures to read and follow. They are not ins
 
 ```bash
 npm ci                                      # install (Node 20, as in CI)
-npm test                                    # quality gate: markdownlint + Prettier check + offline link-format check
+npm test                                    # quality gate: markdownlint + Prettier + list lint + linter tests + offline link-format check
+npm run lint:list                           # entry rules and README navigation only; prints file:line problems
 npx prettier --write <file>                 # format only the files you touched
 npm run lint:awesome                        # awesome-lint over README.md; its repository check needs a pushed branch and GitHub API access
 CHECK_LINKS=1 node scripts/link-check.mjs   # network check; not run in CI; 403/405/429 are logged as inconclusive
 grep -n "<arxiv-id>\|<title-word>" README.md   # duplicate check (a bare arXiv ID catches abs/, pdf/ and vN forms)
 ```
 
-CI (`.github/workflows/ci.yml`, on every pull request and on pushes to `main`) runs `npm run lint` and the offline link check in one job, and `npm run lint:awesome` in a second job. `npm run format` rewrites every Markdown, JSON, and YAML file in the repo, so it counts as a broad sweep. Use it only when asked to.
+CI (`.github/workflows/ci.yml`, on every pull request and on pushes to `main`) runs `npm run lint`, the list linter and its tests, and the offline link check in one job, and `npm run lint:awesome` in a second job. `scripts/lint-list.mjs` enforces the mechanical rules in `CONTRIBUTING.md` (entry format, venue tags, canonical URLs, duplicates, Foundations closure, recency) and keeps Contents, the Field Map, and Reading Paths in sync with the sections; when you change a rule in `CONTRIBUTING.md` that the linter checks, change the linter and its tests in the same PR. `npm run format` rewrites every Markdown, JSON, and YAML file in the repo, so it counts as a broad sweep. Use it only when asked to.
 
 ## Invariants
 
