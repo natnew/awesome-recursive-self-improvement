@@ -27,7 +27,7 @@ Read `CONTRIBUTING.md` before reviewing or editing anything, and do not restate 
 | ----------------- | ----------------------------------------------------------- |
 | `README.md`       | The list itself — the main artefact.                        |
 | `CONTRIBUTING.md` | The curation rules and contribution process.                |
-| `scripts/`        | Maintenance tooling (link checking).                        |
+| `scripts/`        | Maintenance tooling (list linter, link checker).            |
 | `.github/`        | CI, Dependabot, CODEOWNERS, and the curation agents/skills. |
 
 The root `agents/`, `skills/`, `hooks/`, `instructions/`, `plugins/`, and `workflows/` folders are the maintainer's local AI tooling. They are git-ignored by design: do not rely on them, edit them, or propose committing them. There is no runtime service; `npm test` is the quality gate.
@@ -61,7 +61,7 @@ Minimise contributor friction: if a resource clearly qualifies and the problem i
 
 **Suggestion issue.** Apply the inclusion checks in `CONTRIBUTING.md` in order, stopping at the first failure. If the resource qualifies, draft the entry in the exact format with its target section, then recommend a decision from the matrix.
 
-**Broken-link issue.** Verify the reported link, search for a canonical replacement (official over mirrors), and keep the entry if a durable replacement exists. Recommend removal only when no credible replacement exists.
+**Broken-link issue** (reported by a reader, or the weekly "Weekly link check found problems" issue). Verify the reported link, search for a canonical replacement (official over mirrors), and keep the entry if a durable replacement exists. Recommend removal only when no credible replacement exists.
 
 **Pull request review.**
 

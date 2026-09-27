@@ -6,7 +6,7 @@
 
 Entries are organised by where the improvement lands. **Inference-time** methods refine an output and discard the gain when the episode ends. **Data- and weight-level** methods generate their own training signal — data, rewards, curricula — and update the model on it. **Process-level** methods improve the improvement mechanism itself: prompts, scaffolds, agent code, or update rules. Process-level loops are recursion proper: their gains compound, because each improvement applies to the machinery that produces the next one.
 
-Selection is strict: resources from 2022 onwards (except a bounded Foundations section), primary sources only, one neutral sentence per entry, and every link verified in CI. The full criteria are in the contributing guide.
+Selection is strict: resources from 2022 onwards (except a bounded Foundations section), primary sources only, one neutral sentence per entry, every entry checked against those rules on each pull request, and every link checked for reachability each week. The full criteria are in the contributing guide.
 
 ## Contents
 

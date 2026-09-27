@@ -3,11 +3,17 @@
 //
 // Network checking is opt-in (set CHECK_LINKS=1) so the default `npm test` stays fast and
 // offline-friendly; in that mode the script validates that links are well-formed http(s) URLs.
-import { readdir, readFile } from "node:fs/promises";
+// The weekly workflow (.github/workflows/links.yml) runs the network check.
+//
+// Network mode settings (environment variables):
+//   MAX_INCONCLUSIVE  largest tolerated share of links that could not be verified (default 0.1)
+//   LINK_REPORT       path to write a Markdown report of dead and inconclusive links
+import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 
 // One line per event; warnings and errors go to stderr.
-const fmt = (fields, msg) => (Object.keys(fields).length ? `${msg} ${JSON.stringify(fields)}` : msg);
+const fmt = (fields, msg) =>
+  Object.keys(fields).length ? `${msg} ${JSON.stringify(fields)}` : msg;
 const log = {
   info: (fields, msg) => console.log(fmt(fields, msg)),
   warn: (fields, msg) => console.warn(`warning: ${fmt(fields, msg)}`),
@@ -72,36 +78,58 @@ if (malformed > 0) {
 }
 
 if (process.env.CHECK_LINKS === "1") {
-  // Some hosts (publishers, CDNs) block unattended clients with 403/405/429;
-  // those are logged as inconclusive rather than failed.
-  const INCONCLUSIVE = new Set([403, 405, 429]);
-  const CONCURRENCY = 5;
-  let dead = 0;
-  let inconclusive = 0;
+  // Some hosts (publishers, CDNs) block unattended clients with 403/405; those are
+  // inconclusive rather than dead. 429 and 5xx responses and network errors are retried
+  // first, and count as inconclusive if they persist. A run that verifies too few links
+  // fails instead of passing on the links it could reach.
+  const BLOCKED = new Set([403, 405]);
+  const RETRY_DELAYS_MS = [2000, 8000];
+  const CONCURRENCY = 4;
+  const TIMEOUT_MS = 20000;
+  const maxInconclusive = Number(process.env.MAX_INCONCLUSIVE ?? 0.1);
+  const dead = [];
+  const inconclusive = [];
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  async function checkUrl(url, file) {
+  /** Fetch once; returns { status } or { error }. */
+  async function probe(url) {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 15000);
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
     try {
       const res = await fetch(url, {
         method: "GET",
         redirect: "follow",
         signal: controller.signal,
-        headers: { "user-agent": "awesome-list-link-check" },
+        headers: {
+          "user-agent":
+            "Mozilla/5.0 (compatible; awesome-list-link-check; +https://github.com/natnew/awesome-recursive-self-improvement)",
+        },
       });
-      if (res.ok) return;
-      if (INCONCLUSIVE.has(res.status)) {
-        inconclusive += 1;
-        log.warn({ url, file, status: res.status }, "inconclusive (likely bot blocking)");
-        return;
-      }
-      dead += 1;
-      log.error({ url, file, status: res.status }, "dead link");
+      await res.body?.cancel();
+      return { status: res.status };
     } catch (err) {
-      dead += 1;
-      log.error({ url, file, err: err.message }, "unreachable link");
+      return { error: err.cause?.code ?? err.message };
     } finally {
       clearTimeout(timer);
+    }
+  }
+
+  async function checkUrl(url, file) {
+    let result = await probe(url);
+    for (const delay of RETRY_DELAYS_MS) {
+      const transient = result.error || result.status === 429 || result.status >= 500;
+      if (!transient) break;
+      await sleep(delay);
+      result = await probe(url);
+    }
+    const { status, error } = result;
+    if (status >= 200 && status < 400) return;
+    if (BLOCKED.has(status) || status === 429 || status >= 500 || error) {
+      inconclusive.push({ url, file, reason: error ?? `HTTP ${status}` });
+      log.warn({ url, file, status, error }, "inconclusive");
+    } else {
+      dead.push({ url, file, reason: `HTTP ${status}` });
+      log.error({ url, file, status }, "dead link");
     }
   }
 
@@ -116,9 +144,37 @@ if (process.env.CHECK_LINKS === "1") {
     }),
   );
 
-  log.info({ checked: urls.size, dead, inconclusive }, "network check complete");
-  if (dead > 0) {
-    log.error({ dead }, "found dead links");
-    process.exit(1);
+  const share = urls.size ? inconclusive.length / urls.size : 0;
+  const tooManyInconclusive = share > maxInconclusive;
+  log.info(
+    { checked: urls.size, dead: dead.length, inconclusive: inconclusive.length, maxInconclusive },
+    "network check complete",
+  );
+
+  if (process.env.LINK_REPORT) {
+    const rows = (items) => items.map((i) => `| ${i.url} | ${i.file} | ${i.reason} |`).join("\n");
+    const table = (title, items) =>
+      items.length
+        ? `\n### ${title}\n\n| URL | File | Result |\n| --- | --- | --- |\n${rows(items)}\n`
+        : "";
+    const report = [
+      `Checked ${urls.size} unique links: ${dead.length} dead, ${inconclusive.length} inconclusive ` +
+        `(${Math.round(share * 100)}% unverified; the limit is ${Math.round(maxInconclusive * 100)}%).`,
+      table("Dead links", dead),
+      table("Inconclusive links", inconclusive),
+      "\nReplace dead links with the canonical source, or remove the entry if none exists " +
+        "(see the broken-link workflow in AGENTS.md). Inconclusive links usually mean the host " +
+        "blocked the checker; spot-check them in a browser.",
+    ].join("\n");
+    await writeFile(process.env.LINK_REPORT, `${report}\n`);
   }
+
+  if (dead.length > 0) log.error({ dead: dead.length }, "found dead links");
+  if (tooManyInconclusive) {
+    log.error(
+      { unverified: `${Math.round(share * 100)}%`, limit: `${Math.round(maxInconclusive * 100)}%` },
+      "too many links could not be verified",
+    );
+  }
+  if (dead.length > 0 || tooManyInconclusive) process.exit(1);
 }
