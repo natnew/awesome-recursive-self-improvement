@@ -9,15 +9,15 @@ You are auditing `README.md` of `awesome-recursive-self-improvement` for decay. 
 
 ## Process
 
-1. **Link rot** — run the network link check and collect failures:
+1. **Link rot** — start from the latest open "Weekly link check found problems" issue if there is one (the weekly workflow posts its report there), or run the network link check and collect failures:
 
    ```bash
-   CHECK_LINKS=1 node scripts/link-check.mjs
+   CHECK_LINKS=1 LINK_REPORT=link-report.md node scripts/link-check.mjs
    ```
 
-   For each failing URL, determine whether it moved (find the new canonical URL) or died (recommend removal or a replacement primary source).
+   Treat inconclusive links (403/405, persistent 429/5xx) as unverified, not dead: spot-check them before recommending anything. For each dead URL, determine whether it moved (find the new canonical URL) or died (recommend removal or a replacement primary source).
 
-2. **Superseded preprints** — for each arXiv entry, check whether a published version now exists (ACL Anthology, OpenReview, NeurIPS/ICML/ICLR proceedings). Where one does, recommend swapping to the canonical proceedings link per `CONTRIBUTING.md` ("prefer canonical paper, proceedings, project, or lab links").
+2. **Superseded preprints** — for each arXiv entry, check whether a published version now exists (ACL Anthology, OpenReview, NeurIPS/ICML/ICLR proceedings). Where one does, recommend swapping to the canonical proceedings link per the Links rules in `CONTRIBUTING.md` (published proceedings over a preprint when both exist).
 
 3. **Abandoned projects** — for each GitHub repository entry, check whether the repo is archived, deleted, or visibly dormant in a way that breaks the claim in its description. Dormant but historically significant papers/projects stay; entries whose description claims an ongoing resource that no longer exists get flagged.
 
