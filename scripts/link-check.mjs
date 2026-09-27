@@ -1,13 +1,18 @@
 // Maintenance script: extract every Markdown link from the repo's *.md files and report
-// them, with structured logging via pino. Run with `node scripts/link-check.mjs`.
+// them. Run with `node scripts/link-check.mjs`.
 //
 // Network checking is opt-in (set CHECK_LINKS=1) so the default `npm test` stays fast and
 // offline-friendly; in that mode the script validates that links are well-formed http(s) URLs.
 import { readdir, readFile } from "node:fs/promises";
 import { join, relative } from "node:path";
-import pino from "pino";
 
-const log = pino({ name: "link-check", level: process.env.LOG_LEVEL ?? "info" });
+// One line per event; warnings and errors go to stderr.
+const fmt = (fields, msg) => (Object.keys(fields).length ? `${msg} ${JSON.stringify(fields)}` : msg);
+const log = {
+  info: (fields, msg) => console.log(fmt(fields, msg)),
+  warn: (fields, msg) => console.warn(`warning: ${fmt(fields, msg)}`),
+  error: (fields, msg) => console.error(`error: ${fmt(fields, msg)}`),
+};
 
 const ROOT = process.cwd();
 const IGNORE_DIRS = new Set([

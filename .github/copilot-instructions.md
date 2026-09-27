@@ -17,7 +17,6 @@ there is no runtime service to build or deploy.
 | ------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------- |
 | `README.md`                                                               | The list itself â€” the main artifact.                           | âœ…                       |
 | `CONTRIBUTING.md`                                                         | How to propose additions and the quality bar for entries.        | âœ…                       |
-| `assets/`                                                                 | Images referenced by the README.                                 | âœ…                       |
 | `scripts/`                                                                | Maintenance tooling (e.g. link checking).                        | âœ…                       |
 | `.github/`                                                                | CI, governance, and a curated subset of agent/skill definitions. | âœ…                       |
 | `agents/`, `skills/`, `hooks/`, `instructions/`, `plugins/`, `workflows/` | The maintainer's **local** AI-tooling libraries.                 | âŒ Git-ignored by design. |
@@ -34,7 +33,7 @@ there is no runtime service to build or deploy.
 - **Quality bar:** follow `CONTRIBUTING.md`. Every entry must be relevant, live, and non-duplicate.
 - **Formatting:** run `npm run format` (Prettier) before opening a PR. `npm run lint` must pass.
 - **Validation:** `npm test` runs the linter and the link checker (`scripts/link-check.mjs`).
-- **No secrets:** this repo needs no environment variables; `.env.example` is intentionally empty.
+- **No secrets:** this repo needs no environment variables.
 
 ## Commands
 
@@ -43,21 +42,14 @@ there is no runtime service to build or deploy.
 | `npm run lint`   | markdownlint + Prettier check.                 |
 | `npm run format` | Auto-format Markdown/JSON/YAML with Prettier.  |
 | `npm test`       | Lint + link check â€” the repo's quality gate. |
-| `npm run build`  | No-op (documentation repo).                    |
 
 ## Review expectations
 
 - PRs are routed via `.github/CODEOWNERS`.
-- CI (`.github/workflows/ci.yml`) must be green: lint, link check, and `apm audit --ci`.
+- CI (`.github/workflows/ci.yml`) must be green: lint and link check.
 - Security issues: see `SECURITY.md`.
 
-## AI tooling
-
-Agent, skill, and MCP dependencies are declared **by reference** in `apm.yml` (Agent Package
-Manager) and locked in `apm.lock.yaml`, so shared tooling stays in sync across repos without
-committing the raw libraries. MCP servers available to agents are declared in `.vscode/mcp.json`.
-
-### Curation agents and skills (committed)
+## Curation agents and skills (committed)
 
 The list curates itself with topic-aligned tooling under `.github/`:
 
