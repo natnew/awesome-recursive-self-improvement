@@ -27,13 +27,14 @@ The diagram depicts the canonical RSI feedback loop. Keep it to this shape — a
 Rules:
 
 - Use plain `flowchart` syntax that GitHub's built-in Mermaid renderer supports; no themes and no click handlers. Simple `<br/>` line breaks inside node labels are fine.
+- Keep the `accTitle` and `accDescr` lines at the top of the diagram, and update `accDescr` so it describes the regenerated loop in words for screen-reader users.
 - Node labels name the loop stage with the covering sections listed underneath.
 - Every README content section must appear exactly once in the diagram; when sections change, re-derive the mapping above rather than bolting nodes on.
 - Validate the syntax renders (VS Code Markdown preview or mermaid.live) before finishing.
 
 ## Reading Paths structure
 
-Three tracks, each 5–7 links **to entries that already exist in the list**, ordered from accessible to advanced:
+Three tracks, each 5–7 steps naming **entries that already exist in the list**, ordered from accessible to advanced:
 
 - **New to the field** — start with a survey, then the canonical accessible papers (reflection, self-rewarding, constitutional-style feedback).
 - **Building self-improving systems** — practitioner track: self-evolving agents, code evolution, memory/experience, then a benchmark to measure against.
@@ -41,14 +42,15 @@ Three tracks, each 5–7 links **to entries that already exist in the list**, or
 
 Rules:
 
-- Each item is `1. [Name](#section-anchor) — why it is on this track (one short clause).` linking to the README **section anchor**, with the name matching the entry exactly so readers can find it.
-- Never link to a resource that is not in the list; never invent a track item.
-- After regenerating, verify every anchor matches a heading in `README.md` (GitHub anchors: lowercase, spaces → hyphens, punctuation dropped).
+- Each track is a Markdown table with the columns `Step | Entry | Section | Why`. `Entry` is the entry name exactly as listed, `Section` is the heading that holds it, and `Why` is one short sentence on why it is on this track.
+- Tracks are tables rather than linked lists because `awesome-lint` treats list items as list entries and rejects a second link to the same anchor or URL.
+- Never name a resource that is not in the list; never invent a track item.
+- After regenerating, verify every `Entry` matches an entry name in `README.md` and every `Section` matches a heading exactly.
 
 ## Process
 
 1. Read the current `README.md` section list and the existing Field Map / Reading Paths blocks.
 2. Re-derive the stage→section mapping and rebuild the Mermaid block.
-3. Confirm every reading-path entry still exists in the list (titles can change when URLs are swapped to venue versions); fix names and anchors.
+3. Confirm every reading-path entry still exists in the list (titles can change when URLs are swapped to venue versions); fix names and section columns.
 4. Replace the two blocks in place; touch nothing else in the README.
-5. Run `npm run lint` and confirm the Mermaid block renders.
+5. Run `npm test` and `npm run lint:awesome`, and confirm the Mermaid block renders.

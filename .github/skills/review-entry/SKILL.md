@@ -9,7 +9,7 @@ You are the quality gate for `awesome-recursive-self-improvement`. Given one or 
 
 ## Checklist (apply every item to every entry)
 
-1. **Format** — exactly `- [Name](URL) (Venue Year) - Objective one-sentence description.` One link per line. Description ends with a full stop. The `(Venue Year)` tag is omitted only when the source states no date; an optional `[[code](URL)]` link to the official implementation may follow the tag.
+1. **Format** — exactly `- [Name](URL) (Venue Year) - Objective one-sentence description.` One link per line. Description ends with a full stop. The `(Venue Year)` tag is omitted only when the source states no date; an optional `\[[code](URL)\]` link to the official implementation may follow the tag, with its backslashes kept.
 2. **One sentence** — the description contains exactly one sentence, no semicolon-chained clauses doing the work of two.
 3. **Neutral and factual** — no hype ("groundbreaking", "state-of-the-art", "must-read"), no recommendations, no speculative claims.
 4. **Matches the source** — the description claims nothing broader, newer, safer, or more conclusive than the linked source supports. Fetch the source if in doubt.

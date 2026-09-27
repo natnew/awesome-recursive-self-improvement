@@ -43,11 +43,12 @@ Use this exact format, one entry per line:
 
 ```markdown
 - [Name](URL) (Venue Year) - Objective one-sentence description.
+- [Name](URL) (Venue Year) \[[code](URL)\] - Objective one-sentence description.
 ```
 
 - **Name** — the resource's title exactly as the linked source gives it.
 - **Venue tag** — `(Venue Year)` names the publication venue and year the source states, for example `(arXiv 2024)`, `(NeurIPS 2023)`, `(Nature 2024)`, `(ACL 2025)`. Omit the tag only when the source gives no date, as with some organisation or project pages.
-- **Code link** — when an official implementation exists, add a `[[code](URL)]` link between the tag and the description. Link only the official repository.
+- **Code link** — when an official implementation exists, add a `\[[code](URL)\]` link between the tag and the description. Link only the official repository. Keep the backslashes: they render as `[code]` on GitHub, and without them `awesome-lint` reads the outer brackets as an undefined reference.
 - **Description** — one sentence that is neutral, factual, specific, and concise. Start with a capital letter, end with a full stop, and use present tense where natural. Use UK spelling (organise, behaviour, modelling, licence as a noun).
 - **No hype or time-sensitive claims** — avoid words such as groundbreaking, state-of-the-art, must-read, best, latest, leading, or revolutionary, and do not describe a resource as broader, newer, safer, or more conclusive than the linked source supports.
 
@@ -77,7 +78,7 @@ Before proposing a resource, search `README.md` for its URL, its arXiv ID (which
 - Keep heading names, section order, and the README's navigation (Contents, Field Map, Reading Paths) unchanged.
 - Check that the link works and that the linked title matches the entry name.
 - Explain why the resource belongs in scope if the connection is not obvious.
-- Run `npm test` if you have Node.js installed; CI runs the same checks on every pull request.
+- Run `npm test` if you have Node.js installed; CI runs the same checks, plus `awesome-lint`, on every pull request.
 
 ## Curation Tooling
 

@@ -29,15 +29,16 @@ These `.github/skills` files are procedures to read and follow. They are not ins
 npm ci                                      # install (Node 20, as in CI)
 npm test                                    # quality gate: markdownlint + Prettier check + offline link-format check
 npx prettier --write <file>                 # format only the files you touched
+npm run lint:awesome                        # awesome-lint over README.md; its repository check needs a pushed branch and GitHub API access
 CHECK_LINKS=1 node scripts/link-check.mjs   # network check; not run in CI; 403/405/429 are logged as inconclusive
 grep -n "<arxiv-id>\|<title-word>" README.md   # duplicate check (a bare arXiv ID catches abs/, pdf/ and vN forms)
 ```
 
-CI (`.github/workflows/ci.yml`, on every pull request and on pushes to `main`) runs `npm run lint` and the offline link check. `npm run format` rewrites every Markdown, JSON, and YAML file in the repo, so it counts as a broad sweep. Use it only when asked to.
+CI (`.github/workflows/ci.yml`, on every pull request and on pushes to `main`) runs `npm run lint` and the offline link check in one job, and `npm run lint:awesome` in a second job. `npm run format` rewrites every Markdown, JSON, and YAML file in the repo, so it counts as a broad sweep. Use it only when asked to.
 
 ## Invariants
 
-- **Entry format:** `- [Name](URL) (Venue Year) [[code](URL)] - One neutral sentence.` The venue tag is as the source states it. `[[code]]` is optional and must point to the official repository.
+- **Entry format:** `- [Name](URL) (Venue Year) \[[code](URL)\] - One neutral sentence.` The venue tag is as the source states it. The code link is optional, must point to the official repository, and keeps its backslashes so `awesome-lint` passes.
 - **Recency:** 2022 onwards. **Foundations is closed**: never add to it.
 - **Frameworks and Implementations:** link the repository, with no venue tag. Never duplicate a repo already linked as `[code]` elsewhere.
 - **Ordering:** append new entries to the end of their section and never reshuffle existing entries.
