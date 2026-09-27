@@ -17,7 +17,7 @@ You are auditing `README.md` of `awesome-recursive-self-improvement` for decay. 
 
    Treat inconclusive links (403/405, persistent 429/5xx) as unverified, not dead: spot-check them before recommending anything. For each dead URL, determine whether it moved (find the new canonical URL) or died (recommend removal or a replacement primary source).
 
-2. **Superseded preprints** — for each arXiv entry, check whether a published version now exists (ACL Anthology, OpenReview, NeurIPS/ICML/ICLR proceedings). Where one does, recommend swapping to the canonical proceedings link per the Links rules in `CONTRIBUTING.md` (published proceedings over a preprint when both exist).
+2. **Superseded preprints** — for each arXiv entry, check whether a published version now exists (ACL Anthology, OpenReview, NeurIPS/ICML/ICLR proceedings). Where one does, recommend swapping to the canonical proceedings link per the Links rules in `CONTRIBUTING.md` (published proceedings over a preprint when both exist), with the venue tag and the entry name updated to match the published version. If the tag's year changes, the entry moves to keep its section oldest first; `npm test` flags any mismatch.
 
 3. **Abandoned projects** — for each GitHub repository entry, check whether the repo is archived, deleted, or visibly dormant in a way that breaks the claim in its description. Dormant but historically significant papers/projects stay; entries whose description claims an ongoing resource that no longer exists get flagged.
 

@@ -1,5 +1,5 @@
-// Maintenance script: extract every Markdown link from the repo's *.md files and report
-// them. Run with `node scripts/link-check.mjs`.
+// Maintenance script: extract every Markdown link from the repository's tracked *.md files
+// and report them. Run with `node scripts/link-check.mjs`.
 //
 // Network checking is opt-in (set CHECK_LINKS=1) so the default `npm test` stays fast and
 // offline-friendly; in that mode the script validates that links are well-formed http(s) URLs.
@@ -8,6 +8,7 @@
 // Network mode settings (environment variables):
 //   MAX_INCONCLUSIVE  largest tolerated share of links that could not be verified (default 0.1)
 //   LINK_REPORT       path to write a Markdown report of dead and inconclusive links
+import { execFileSync } from "node:child_process";
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 
@@ -21,27 +22,16 @@ const log = {
 };
 
 const ROOT = process.cwd();
-const IGNORE_DIRS = new Set([
-  "node_modules",
-  ".git",
-  "agents",
-  "skills",
-  "hooks",
-  "instructions",
-  "plugins",
-  "workflows",
-  "reports",
-]);
 const LINK_RE = /\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/g;
 
-/** Recursively collect Markdown files, skipping ignored directories. */
-async function collectMarkdown(dir) {
+/** Recursively collect Markdown files outside a git checkout, skipping dependencies. */
+async function walkMarkdown(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
   const files = [];
   for (const entry of entries) {
     if (entry.isDirectory()) {
-      if (IGNORE_DIRS.has(entry.name)) continue;
-      files.push(...(await collectMarkdown(join(dir, entry.name))));
+      if (entry.name === "node_modules" || entry.name === ".git") continue;
+      files.push(...(await walkMarkdown(join(dir, entry.name))));
     } else if (entry.isFile() && entry.name.endsWith(".md")) {
       files.push(join(dir, entry.name));
     }
@@ -49,7 +39,26 @@ async function collectMarkdown(dir) {
   return files;
 }
 
-const files = await collectMarkdown(ROOT);
+/**
+ * The tracked Markdown files, so the git-ignored local tooling folders are skipped without
+ * also skipping the committed .github/agents and .github/skills that share their names.
+ */
+async function collectMarkdown() {
+  try {
+    const out = execFileSync("git", ["ls-files", "-z", "--", "*.md"], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    });
+    return out
+      .split("\0")
+      .filter(Boolean)
+      .map((f) => join(ROOT, f));
+  } catch {
+    return walkMarkdown(ROOT);
+  }
+}
+
+const files = await collectMarkdown();
 let total = 0;
 let malformed = 0;
 const urls = new Map(); // url -> first file seen in
