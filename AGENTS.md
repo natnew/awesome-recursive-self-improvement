@@ -23,12 +23,12 @@ Read `CONTRIBUTING.md` before reviewing or editing anything, and do not restate 
 
 ## Repository Structure
 
-| Path              | Purpose                                                     |
-| ----------------- | ----------------------------------------------------------- |
-| `README.md`       | The list itself — the main artefact.                        |
-| `CONTRIBUTING.md` | The curation rules and contribution process.                |
-| `scripts/`        | Maintenance tooling (list linter, link checker).            |
-| `.github/`        | CI, Dependabot, CODEOWNERS, and the curation agents/skills. |
+| Path              | Purpose                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------ |
+| `README.md`       | The list itself — the main artefact.                                                                   |
+| `CONTRIBUTING.md` | The curation rules and contribution process.                                                           |
+| `scripts/`        | Maintenance tooling: the list linter (`npm test`) and the link checker (weekly in CI).                 |
+| `.github/`        | CI and link-check workflows, issue forms, PR template, Dependabot, CODEOWNERS, curation agents/skills. |
 
 The root `agents/`, `skills/`, `hooks/`, `instructions/`, `plugins/`, and `workflows/` folders are the maintainer's local AI tooling. They are git-ignored by design: do not rely on them, edit them, or propose committing them. There is no runtime service; `npm test` is the quality gate.
 

@@ -53,7 +53,7 @@ Apply the inclusion checks in `CONTRIBUTING.md` in order and stop at the first f
 
 ## How to work
 
-- **Verify against the source.** Fetch the arXiv `abs/` page, proceedings page, or repository to confirm the title, venue, year, and what the paper actually claims. Never write a description or venue tag from memory. If the fetch fails, say the entry is unverified.
+- **Verify against the source.** Fetch the arXiv `abs/` page, proceedings page, or repository to confirm the title, venue, year, and what the paper actually claims. Never write a description or venue tag from memory. Sandboxed sessions often cannot reach arXiv, OpenReview, or proceedings hosts; web search results that show the proceedings or journal page are an acceptable fallback, but never construct a URL you have not seen. If neither works, say the entry is unverified.
 - **Check for duplicates beyond `README.md`.** Also check open and closed issues and PRs with the GitHub MCP tools. A published version may already be listed under a preprint's title.
 - **Keep diffs minimal.** Change only the lines you were asked to change. A single-entry task touches one line of `README.md` and nothing else.
 - **Run `npm test` before you commit.** Show its output rather than claiming it passed.

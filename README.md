@@ -6,7 +6,7 @@
 
 Entries are organised by where the improvement lands. **Inference-time** methods refine an output and discard the gain when the episode ends. **Data- and weight-level** methods generate their own training signal — data, rewards, curricula — and update the model on it. **Process-level** methods improve the improvement mechanism itself: prompts, scaffolds, agent code, or update rules. Process-level loops are recursion proper: their gains compound, because each improvement applies to the machinery that produces the next one.
 
-Selection is strict: resources from 2022 onwards (except a bounded Foundations section), primary sources only, one neutral sentence per entry, every entry checked against those rules on each pull request, and every link checked for reachability each week. The full criteria are in the contributing guide.
+Selection is strict: resources from 2022 onwards (except a bounded Foundations section), primary sources only, and one neutral sentence per entry. Entries run oldest first within each section. Entry format, link form, and order are checked automatically on every pull request, and every link is checked for reachability each week. The full criteria are in the contributing guide.
 
 ## Contents
 
@@ -247,7 +247,7 @@ Maintained open-source software for building self-improvement loops. Research co
 
 ## Evaluation, Verification, and Benchmarks
 
-Benchmarks and evaluations that measure whether improvement loops actually improve anything.
+Benchmarks and evaluations that measure whether improvement loops actually improve anything, and how far agents can automate the research that produces better AI systems.
 
 - [MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering](https://openreview.net/forum?id=6s5uXNWGIh) (ICLR 2025) \[[code](https://github.com/openai/mle-bench)\] - Evaluates agents on real machine-learning engineering tasks derived from Kaggle competitions.
 - [RE-Bench: Evaluating Frontier AI R&D Capabilities of Language Model Agents against Human Experts](https://proceedings.mlr.press/v267/wijk25a.html) (ICML 2025) \[[code](https://github.com/METR/RE-Bench)\] - Compares language-model agents with human experts on open-ended machine-learning research-engineering environments to measure AI R&D automation.
