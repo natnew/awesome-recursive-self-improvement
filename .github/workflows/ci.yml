@@ -28,6 +28,12 @@ jobs:
       - name: Lint and format check
         run: npm run lint
 
+      - name: List lint (entry rules and README navigation)
+        run: npm run lint:list
+
+      - name: List linter tests
+        run: node --test scripts/lint-list.test.mjs
+
       - name: Link check
         run: node scripts/link-check.mjs
 

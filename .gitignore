@@ -16,6 +16,8 @@ node_modules/
 # Local maintenance scripts stay ignored; the committed ones are listed explicitly.
 /scripts/*
 !/scripts/link-check.mjs
+!/scripts/lint-list.mjs
+!/scripts/lint-list.test.mjs
 
 # Local environment and editor files
 .env

@@ -7,9 +7,10 @@
   "license": "MIT",
   "scripts": {
     "lint": "markdownlint-cli2 \"**/*.md\" && prettier --check \"**/*.{md,json,yml,yaml}\"",
+    "lint:list": "node scripts/lint-list.mjs",
     "lint:awesome": "awesome-lint README.md",
     "format": "prettier --write \"**/*.{md,json,yml,yaml}\"",
-    "test": "npm run lint && node scripts/link-check.mjs"
+    "test": "npm run lint && npm run lint:list && node --test scripts/lint-list.test.mjs && node scripts/link-check.mjs"
   },
   "devDependencies": {
     "awesome-lint": "2.3.0",

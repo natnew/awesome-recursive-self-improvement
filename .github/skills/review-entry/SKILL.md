@@ -29,9 +29,11 @@ You are the quality gate for `awesome-recursive-self-improvement`. Given one or 
 13. **Link works** — the URL resolves. Spot-check it, and run the repo gate:
 
     ```bash
-    node scripts/link-check.mjs            # offline format check
+    npm test                                    # includes the list linter
     CHECK_LINKS=1 node scripts/link-check.mjs   # network check
     ```
+
+With the entry in place, `npm test` runs `scripts/lint-list.mjs`, which mechanically checks rules 1 (format), 7 (HTTPS, arXiv `abs/`, tracking parameters, shorteners), 8 (recency and the closed Foundations section), and 11 (duplicate URL, arXiv ID, or name), plus the Contents, Field Map, and Reading Paths. Spend manual review on what it cannot judge: source match, scope, primary source, distinctness, and placement.
 
 ## Output format
 
