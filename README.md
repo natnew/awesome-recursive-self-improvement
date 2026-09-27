@@ -159,7 +159,6 @@ Data- and weight-level loops: the model produces its own training signal — dat
 - [Meta-Rewarding Language Models: Self-Improving Alignment with LLM-as-a-Meta-Judge](https://aclanthology.org/2025.emnlp-main.583/) (EMNLP 2025) - Trains models to improve both task responses and the reward judgements used to select them.
 - [Direct Nash Optimization: Teaching Language Models to Self-Improve with General Preferences](https://arxiv.org/abs/2404.03715) (arXiv 2024) - Introduces an iterative preference-optimisation method with monotonic improvement over a strong oracle.
 - [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073) (arXiv 2022) - Demonstrates critique, revision, and preference modelling using AI feedback instead of human labels for harmlessness training.
-- [WizardLM: Empowering Large Language Models to Follow Complex Instructions](https://arxiv.org/abs/2304.12244) (arXiv 2023) \[[code](https://github.com/nlpxucan/WizardLM)\] - Introduces Evol-Instruct for generating increasingly complex instruction data from seed examples.
 
 ## Self-Play and Zero-Data Reasoning
 
@@ -246,7 +245,6 @@ Maintained open-source software for building self-improvement loops. Research co
 Benchmarks and evaluations that measure whether improvement loops actually improve anything.
 
 - [MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering](https://openreview.net/forum?id=6s5uXNWGIh) (ICLR 2025) \[[code](https://github.com/openai/mle-bench)\] - Evaluates agents on real machine-learning engineering tasks derived from Kaggle competitions.
-- [ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery](https://openreview.net/forum?id=6z4YKr0GK6) (ICLR 2025) \[[code](https://github.com/OSU-NLP-Group/ScienceAgentBench)\] - Benchmarks language agents on code-driven tasks in data-driven scientific discovery.
 - [AIRS-Bench: a Suite of Tasks for Frontier AI Research Science Agents](https://arxiv.org/abs/2602.06855) (arXiv 2026) - Measures whether agents can handle the research lifecycle through idea generation, experiment analysis, and iterative refinement tasks.
 
 ## Safety, Governance, and Limits
@@ -255,7 +253,6 @@ Failure modes, dangerous-capability evaluations, and governance mechanisms that 
 
 - [Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use](https://arxiv.org/abs/2605.02964) (arXiv 2026) - Measures exploit-seeking behaviour in tool-using language model agents trained with reinforcement learning.
 - [EvilGenie: A Reward Hacking Benchmark](https://arxiv.org/abs/2511.21654) (arXiv 2025) - Tests whether coding agents exploit benchmark loopholes such as hard-coded cases or modified test files.
-- [AgentHarm: A Benchmark for Measuring Harmfulness of LLM Agents](https://arxiv.org/abs/2410.09024) (arXiv 2024) - Evaluates whether LLM agents comply with or refuse malicious multi-step tasks.
 - [SHADE-Arena: Evaluating Sabotage and Monitoring in LLM Agents](https://arxiv.org/abs/2506.15740) (arXiv 2025) - Tests whether agents can pursue hidden harmful objectives while evading monitoring.
 - [Safety Must Precede the Deployment of Open-Ended AI](https://arxiv.org/abs/2502.04512) (arXiv 2025) - Analyses safety risks and mitigation strategies for dynamic open-ended systems that can propagate and change over time.
 - [AI models collapse when trained on recursively generated data](https://www.nature.com/articles/s41586-024-07566-y) (Nature 2024) - Shows that recursively training generative models on model-generated data can cause distributional collapse.
@@ -265,7 +262,6 @@ Failure modes, dangerous-capability evaluations, and governance mechanisms that 
 - [Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision](https://proceedings.mlr.press/v235/burns24b.html) (ICML 2024) - Studies how strong models trained on labels from weaker supervisors can recover capabilities beyond their supervision, as an empirical setting for overseeing models stronger than their overseers.
 - [Anthropic's Responsible Scaling Policy](https://www.anthropic.com/news/anthropics-responsible-scaling-policy) (Anthropic 2023) - Defines capability thresholds, including autonomy-related capabilities, that trigger stronger safeguards before further scaling.
 - [Introducing the Frontier Safety Framework](https://deepmind.google/discover/blog/introducing-the-frontier-safety-framework/) (Google DeepMind 2024) - Sets out critical capability levels, including machine-learning research automation, with mitigations applied as models approach them.
-- [METR](https://metr.org/) - Research organisation that evaluates frontier AI systems for autonomous-replication and AI research-and-development capabilities.
 
 ## Related Awesome Lists
 

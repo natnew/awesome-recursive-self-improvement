@@ -14,7 +14,7 @@ It is not a general AGI, singularity, futurism, philosophy, or AI-agent director
 
 Apply these checks in order and stop at the first failure:
 
-1. **Scope** — the resource describes a self-improvement loop (feedback, self-evaluation, self-generated data, code modification, memory, test-time adaptation, automated curricula, or governed updates), or evaluates, bounds, or governs one. A topic adjacent to such a loop is not enough.
+1. **Scope** — the resource describes a self-improvement loop (feedback, self-evaluation, self-generated data, code modification, memory, test-time adaptation, automated curricula, or governed updates), or evaluates, bounds, or governs one. A topic adjacent to such a loop is not enough: training on data from a different, stronger model (distillation), general agent-capability or misuse benchmarks that do not measure self-improvement or AI research automation, and organisation homepages do not qualify on their own.
 2. **Recency** — published or substantially updated from 2022 onwards. The Foundations section is a deliberately bounded set of pre-2022 landmarks and is closed to new entries.
 3. **Primary source** — arXiv, ACL Anthology, OpenReview, official conference or workshop pages, official project pages, official GitHub repositories, official lab blogs, or official documentation.
 4. **Not a duplicate** — nothing equivalent or stronger is already listed (see [Duplicates](#duplicates)).
