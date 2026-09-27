@@ -72,6 +72,12 @@ Entries in the Frameworks and Implementations section are maintained open-source
 
 Before proposing a resource, search `README.md` for its URL, its arXiv ID (which catches `abs/`, `pdf/`, and versioned forms), and a distinctive title word, and search existing issues and pull requests. Check for the same paper under a different URL, a preprint of an already-listed published version, a renamed repository, and a repository already linked as `[code]`.
 
+## Suggesting a Resource
+
+Either open a [suggestion issue](https://github.com/natnew/awesome-recursive-self-improvement/issues/new?template=suggest-resource.yml), which asks for the link, the section, and a short account of the self-improvement loop, or open a pull request that adds the entry directly. Report dead links, moved links, or newer published versions with the [link problem form](https://github.com/natnew/awesome-recursive-self-improvement/issues/new?template=report-link.yml).
+
+Maintainers aim to respond to new issues and pull requests within seven days. Small fixes to an otherwise suitable entry (wording, URL form, venue tag, placement) are usually made by the maintainer rather than sent back.
+
 ## Pull Requests
 
 - Add each resource to the single best-fitting section, following the rules above.

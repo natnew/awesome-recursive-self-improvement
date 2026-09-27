@@ -21,7 +21,7 @@ You curate the section structure of `awesome-recursive-self-improvement`. The ta
    - the change (split / merge / rename / new section / no change) with a one-paragraph justification;
    - a migration table mapping every affected entry to its new section;
    - the table-of-contents diff;
-   - the follow-ups the change triggers: update the Field Map and Reading Paths via `.github/skills/generate-field-map/SKILL.md`, and check anchors used elsewhere.
+   - the follow-ups the change triggers: update the Field Map and Reading Paths via `.github/skills/generate-field-map/SKILL.md`, update the section dropdown in `.github/ISSUE_TEMPLATE/suggest-resource.yml`, and run `npm test` (the list linter checks Contents, the Field Map, Reading Paths, and the dropdown against the new sections).
 4. **Favour stability.** "No change needed" is a common and correct conclusion. Sections change rarely; prefer adjusting one entry's placement over reshaping the taxonomy.
 
 ## Guardrails

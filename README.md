@@ -277,4 +277,4 @@ Failure modes, dangerous-capability evaluations, and governance mechanisms that 
 
 ## Contributing
 
-Contributions are welcome, from a single new entry to a taxonomy fix. Read the [contributing guide](CONTRIBUTING.md) first; running your entry through the review checklist (`.github/skills/review-entry/SKILL.md`) makes review faster for everyone.
+Contributions are welcome, from a single new entry to a taxonomy fix. Suggest a resource through the issue form or open a pull request; the [contributing guide](CONTRIBUTING.md) explains what belongs on the list and the entry format.

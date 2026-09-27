@@ -59,7 +59,7 @@ Minimise contributor friction: if a resource clearly qualifies and the problem i
 
 ## Workflows
 
-**Suggestion issue.** Apply the inclusion checks in `CONTRIBUTING.md` in order, stopping at the first failure. If the resource qualifies, draft the entry in the exact format with its target section, then recommend a decision from the matrix.
+**Suggestion issue.** Most arrive through the suggestion form, which records the link, venue, suggested section, and the contributor's account of the loop; verify each against the source rather than trusting it. Apply the inclusion checks in `CONTRIBUTING.md` in order, stopping at the first failure. If the resource qualifies, draft the entry in the exact format with its target section, then recommend a decision from the matrix.
 
 **Broken-link issue** (reported by a reader, or the weekly "Weekly link check found problems" issue). Verify the reported link, search for a canonical replacement (official over mirrors), and keep the entry if a durable replacement exists. Recommend removal only when no credible replacement exists.
 

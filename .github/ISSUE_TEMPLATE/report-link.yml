@@ -1,0 +1,34 @@
+name: Report a link or entry problem
+description: A dead or moved link, a newer published version, or a description that does not match its source.
+title: "Link: "
+labels: [bug]
+body:
+  - type: input
+    id: entry
+    attributes:
+      label: Entry
+      description: The entry's name or its current link.
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: Problem
+      options:
+        - The link is dead
+        - The link has moved
+        - A published version (proceedings or journal) now exists
+        - The description does not match the source
+        - Something else
+    validations:
+      required: true
+  - type: input
+    id: replacement
+    attributes:
+      label: Replacement link
+      description: Optional. The canonical replacement, if you know it.
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Optional. Anything that helps verify the problem.

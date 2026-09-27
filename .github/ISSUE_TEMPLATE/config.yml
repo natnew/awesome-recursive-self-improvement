@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contribution rules
+    url: https://github.com/natnew/awesome-recursive-self-improvement/blob/main/CONTRIBUTING.md
+    about: What belongs on the list, the entry format, and how pull requests are reviewed.
