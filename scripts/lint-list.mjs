@@ -1,6 +1,7 @@
 // Offline linter for README.md: checks every list entry against the entry rules in
 // CONTRIBUTING.md and checks that the README's navigation (Contents, Field Map, Reading
-// Paths) matches its sections. Run with `node scripts/lint-list.mjs [file]`.
+// Paths) and the suggestion issue form's section dropdown match its sections.
+// Run with `node scripts/lint-list.mjs [file]`.
 import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 
@@ -14,7 +15,8 @@ const RECENCY_YEAR = 2022;
 const REPO_HOSTS = new Set(["github.com", "gitlab.com", "codeberg.org"]);
 const SHORTENER_HOSTS = new Set(["bit.ly", "t.co", "tinyurl.com", "goo.gl", "ow.ly", "buff.ly"]);
 const TRACKING_PARAM = /^(utm_\w+|fbclid|gclid|ref|ref_src)$/i;
-const HYPE = /\b(groundbreaking|state-of-the-art|must-read|revolutionary|cutting-edge|world-class|best-in-class)\b/i;
+const HYPE =
+  /\b(groundbreaking|state-of-the-art|must-read|revolutionary|cutting-edge|world-class|best-in-class)\b/i;
 
 const ENTRY =
   /^- \[(?<name>[^\]]+)\]\((?<url>[^)\s]+)\)(?: \((?<venue>[^()]+) (?<year>\d{4})\))?(?: \\\[\[code\]\((?<code>[^)\s]+)\)\\\])? - (?<desc>.+)$/;
@@ -37,7 +39,8 @@ function urlProblems(url) {
   }
   const problems = [];
   if (u.protocol !== "https:") problems.push(`use HTTPS: ${url}`);
-  if (/arxiv\.org\/pdf\//i.test(url)) problems.push(`link the arXiv abs/ page, not the PDF: ${url}`);
+  if (/arxiv\.org\/pdf\//i.test(url))
+    problems.push(`link the arXiv abs/ page, not the PDF: ${url}`);
   if (SHORTENER_HOSTS.has(u.hostname)) problems.push(`URL shortener: ${url}`);
   for (const key of u.searchParams.keys()) {
     if (TRACKING_PARAM.test(key)) problems.push(`tracking parameter "${key}": ${url}`);
@@ -94,7 +97,10 @@ export function lint(markdown) {
     for (const { text, line } of entries) {
       const m = ENTRY.exec(text);
       if (!m) {
-        report(line, "entry does not match `- [Name](URL) (Venue Year) \\[[code](URL)\\] - Description.`");
+        report(
+          line,
+          "entry does not match `- [Name](URL) (Venue Year) \\[[code](URL)\\] - Description.`",
+        );
         continue;
       }
       const { name, url, venue, year, code, desc } = m.groups;
@@ -106,10 +112,17 @@ export function lint(markdown) {
       if (undated && (venue || code)) {
         report(line, `entries in "${section.name}" take no venue tag or code link`);
       }
-      if (section.name === "Frameworks and Implementations" && !REPO_HOSTS.has(new URL(url).hostname)) {
+      if (
+        section.name === "Frameworks and Implementations" &&
+        !REPO_HOSTS.has(new URL(url).hostname)
+      ) {
         report(line, "Frameworks and Implementations entries link the project's repository");
       }
-      if (!undated && !venue && /arxiv\.org|openreview\.net|aclanthology\.org|nature\.com/.test(url)) {
+      if (
+        !undated &&
+        !venue &&
+        /arxiv\.org|openreview\.net|aclanthology\.org|nature\.com/.test(url)
+      ) {
         report(line, "dated source needs a (Venue Year) tag");
       }
       if (year) {
@@ -130,12 +143,14 @@ export function lint(markdown) {
       const key = normaliseUrl(url);
       if (seenUrls.has(key)) report(line, `duplicate URL (also on line ${seenUrls.get(key)})`);
       else seenUrls.set(key, line);
-      if (seenNames.has(name)) report(line, `duplicate entry name (also on line ${seenNames.get(name)})`);
+      if (seenNames.has(name))
+        report(line, `duplicate entry name (also on line ${seenNames.get(name)})`);
       else seenNames.set(name, line);
       for (const link of [url, code].filter(Boolean)) {
         const id = ARXIV_ID.exec(link)?.[1];
         if (!id) continue;
-        if (seenArxiv.has(id)) report(line, `duplicate arXiv ID ${id} (also on line ${seenArxiv.get(id)})`);
+        if (seenArxiv.has(id))
+          report(line, `duplicate arXiv ID ${id} (also on line ${seenArxiv.get(id)})`);
         else seenArxiv.set(id, line);
       }
       if (section.name === "Frameworks and Implementations") frameworkRepos.push({ key, line });
@@ -160,10 +175,14 @@ export function lint(markdown) {
       .filter(({ m }) => m);
     const listed = items.map(({ m }) => m[1]);
     if (listed.join("\n") !== expected.map((s) => s.name).join("\n")) {
-      report(contents.line, `Contents must list, in order: ${expected.map((s) => s.name).join(", ")}`);
+      report(
+        contents.line,
+        `Contents must list, in order: ${expected.map((s) => s.name).join(", ")}`,
+      );
     }
     for (const { m, line } of items) {
-      if (m[2] !== anchor(m[1])) report(line, `Contents anchor for "${m[1]}" should be #${anchor(m[1])}`);
+      if (m[2] !== anchor(m[1]))
+        report(line, `Contents anchor for "${m[1]}" should be #${anchor(m[1])}`);
     }
   }
 
@@ -178,7 +197,8 @@ export function lint(markdown) {
     );
     for (const section of listSections.filter((s) => s.name !== "Related Awesome Lists")) {
       const count = labels.filter((l) => l === section.name).length;
-      if (count !== 1) report(fieldMap.line, `Field Map must name "${section.name}" once; found ${count}`);
+      if (count !== 1)
+        report(fieldMap.line, `Field Map must name "${section.name}" once; found ${count}`);
     }
   }
 
@@ -197,14 +217,54 @@ export function lint(markdown) {
   return problems.sort((a, b) => a.line - b.line);
 }
 
-// CLI: lint the given file (default README.md) and exit non-zero on problems.
+/**
+ * Check that the "Suggested section" dropdown of the suggestion issue form offers exactly
+ * the README's open list sections (every list section except the closed Foundations), in
+ * order, plus a final "Not sure". Returns { line, message } problems.
+ */
+export function lintIssueForm(markdown, formYaml) {
+  const expected = parseSections(markdown.split("\n"))
+    .map((s) => s.name)
+    .filter((name) => !NON_LIST_HEADINGS.has(name) && name !== FOUNDATIONS.name);
+  const lines = formYaml.split("\n");
+  const start = lines.findIndex((l) => /^\s+id: section\s*$/.test(l));
+  const optionsAt = lines.findIndex((l, i) => i > start && /^\s+options:\s*$/.test(l));
+  if (start === -1 || optionsAt === -1) {
+    return [{ line: 1, message: 'issue form has no "section" dropdown' }];
+  }
+  const options = [];
+  for (const l of lines.slice(optionsAt + 1)) {
+    const option = /^\s+- (.+?)\s*$/.exec(l);
+    if (!option) break;
+    options.push(option[1]);
+  }
+  const wanted = [...expected, "Not sure"];
+  if (options.join("\n") !== wanted.join("\n")) {
+    return [
+      { line: optionsAt + 1, message: `section options must be, in order: ${wanted.join(", ")}` },
+    ];
+  }
+  return [];
+}
+
+// CLI: lint the given file (default README.md), and the suggestion issue form when present,
+// and exit non-zero on problems.
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const file = process.argv[2] ?? "README.md";
-  const problems = lint(await readFile(file, "utf8"));
-  for (const { line, message } of problems) console.error(`${file}:${line}: ${message}`);
-  if (problems.length) {
-    console.error(`\n${problems.length} problem(s). The rules are in CONTRIBUTING.md.`);
+  const form = ".github/ISSUE_TEMPLATE/suggest-resource.yml";
+  const markdown = await readFile(file, "utf8");
+  const results = [[file, lint(markdown)]];
+  const formYaml = await readFile(form, "utf8").catch(() => null);
+  if (formYaml !== null) results.push([form, lintIssueForm(markdown, formYaml)]);
+
+  let count = 0;
+  for (const [path, problems] of results) {
+    for (const { line, message } of problems) console.error(`${path}:${line}: ${message}`);
+    count += problems.length;
+  }
+  if (count) {
+    console.error(`\n${count} problem(s). The rules are in CONTRIBUTING.md.`);
     process.exit(1);
   }
-  console.log(`${file}: list lint passed`);
+  console.log(`${results.map(([path]) => path).join(", ")}: list lint passed`);
 }

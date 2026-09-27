@@ -1,0 +1,81 @@
+name: Suggest a resource
+description: Propose a paper, benchmark, repository, or other resource for the list.
+title: "Suggest: "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a resource. The list is curated rather than comprehensive: a resource belongs only if it describes, evaluates, or bounds a self-improvement loop. The full rules are in [CONTRIBUTING.md](https://github.com/natnew/awesome-recursive-self-improvement/blob/main/CONTRIBUTING.md).
+  - type: input
+    id: url
+    attributes:
+      label: Link
+      description: The canonical primary source — published proceedings if they exist, otherwise the arXiv abs/ page, official project page, or official repository.
+      placeholder: https://arxiv.org/abs/2303.17651
+    validations:
+      required: true
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Exactly as the linked source gives it.
+    validations:
+      required: true
+  - type: input
+    id: venue
+    attributes:
+      label: Venue and year
+      description: As the source states it, for example "NeurIPS 2023" or "arXiv 2025". Leave empty for undated project or repository pages.
+  - type: input
+    id: code
+    attributes:
+      label: Official code repository
+      description: Optional. Only the authors' official repository.
+  - type: textarea
+    id: loop
+    attributes:
+      label: What is the self-improvement loop?
+      description: In two or three sentences — what improves, from what feedback signal, and where does the gain land (the output, the training data or weights, or the improvement process itself)?
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: Suggested section
+      description: The Foundations section is closed to new entries.
+      options:
+        - Surveys and Overviews
+        - Workshops and Research Agendas
+        - Self-Refinement and Reflection
+        - Test-Time Adaptation and Inference-Time Improvement
+        - Experience Learning and Memory
+        - Self-Generated Data and Self-Rewarding Models
+        - Self-Play and Zero-Data Reasoning
+        - Recursive Decomposition and Automated Curricula
+        - Scaffold and Prompt Optimisation
+        - Code Evolution and Algorithm Discovery
+        - Self-Evolving Agents
+        - Automated AI Research and Scientific Discovery
+        - Multimodal and Embodied Self-Improvement
+        - Frameworks and Implementations
+        - Evaluation, Verification, and Benchmarks
+        - Safety, Governance, and Limits
+        - Related Awesome Lists
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: description
+    attributes:
+      label: Proposed description
+      description: Optional. One neutral sentence, for example "Trains a model on its own verified solutions to improve mathematical reasoning."
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched the README, issues, and pull requests, and this resource is not already listed or proposed.
+          required: true
+        - label: The resource was published or substantially updated in 2022 or later.
+          required: true
