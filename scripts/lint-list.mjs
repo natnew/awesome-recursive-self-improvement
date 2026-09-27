@@ -94,6 +94,10 @@ export function lint(markdown) {
       );
     }
 
+    // Dated sections run oldest first by venue year; undated entries come last.
+    let lastYear = 0;
+    let seenUndated = false;
+
     for (const { text, line } of entries) {
       const m = ENTRY.exec(text);
       if (!m) {
@@ -105,6 +109,17 @@ export function lint(markdown) {
       }
       const { name, url, venue, year, code, desc } = m.groups;
       names.add(name);
+
+      if (!undated) {
+        if (!year) seenUndated = true;
+        else if (seenUndated) report(line, "undated entries go after dated ones in a section");
+        else if (Number(year) < lastYear) {
+          report(
+            line,
+            `entries run oldest first: move this ${year} entry above the ${lastYear} ones`,
+          );
+        } else lastYear = Number(year);
+      }
 
       for (const p of urlProblems(url)) report(line, p);
       if (code) for (const p of urlProblems(code)) report(line, `code link: ${p}`);

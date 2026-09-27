@@ -136,6 +136,13 @@ test("Foundations is closed and the recency floor holds elsewhere", () => {
   );
 });
 
+test("dated sections run oldest first, with undated entries last", () => {
+  assertFlags(mutate(`${LADDER} (arXiv 2025)`, `${LADDER} (arXiv 2023)`), /oldest first/);
+  const late =
+    "- [Late Paper](https://arxiv.org/abs/2601.00001) (arXiv 2026) - Adds a dated entry.\n";
+  assertFlags(mutate("\n## Foundations", `${late}\n## Foundations`), /undated entries go after/);
+});
+
 test("Contents matches the section headings", () => {
   assertFlags(mutate("- [Foundations](#foundations)\n", ""), /Contents must list/);
   assertFlags(mutate("(#foundations)", "(#foundation)"), /anchor/);

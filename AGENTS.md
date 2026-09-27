@@ -39,7 +39,7 @@ Agents may help with entry and pull request review, issue triage, broken-link an
 Agents must not:
 
 - Add speculative or low-signal entries, or preserve promotional wording.
-- Reorganise the list, reorder entries, or run broad formatting sweeps (`npm run format` rewrites every file).
+- Reorganise the list, reorder entries beyond the chronological rule in `CONTRIBUTING.md`, or run broad formatting sweeps (`npm run format` rewrites every file).
 - Turn one contribution into a structural change, or edit unrelated files.
 - Add to the closed Foundations section.
 - Touch protected areas unless explicitly instructed.

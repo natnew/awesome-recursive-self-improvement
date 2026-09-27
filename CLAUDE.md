@@ -42,7 +42,7 @@ CI (`.github/workflows/ci.yml`, on every pull request and on pushes to `main`) r
 - **Entry format:** `- [Name](URL) (Venue Year) \[[code](URL)\] - One neutral sentence.` The venue tag is as the source states it. The code link is optional, must point to the official repository, and keeps its backslashes so `awesome-lint` passes.
 - **Recency:** 2022 onwards. **Foundations is closed**: never add to it.
 - **Frameworks and Implementations:** link the repository, with no venue tag. Never duplicate a repo already linked as `[code]` elsewhere.
-- **Ordering:** append new entries to the end of their section and never reshuffle existing entries.
+- **Ordering:** sections run oldest first by venue-tag year, undated entries last; place a new entry after the others of its year (usually the end of the section). Frameworks and Related Awesome Lists are appended. The linter enforces this; never reshuffle other entries.
 - **Structure is frozen without approval.** Headings, Contents, badges, section intros, the Field Map, and Reading Paths are protected (full list in `AGENTS.md`). A section add, split, merge, or rename needs maintainer approval first. After approval, follow `generate-field-map` so the Field Map and Reading Paths stay in sync. Don't hand-write that output.
 - **Don't edit tooling unless asked:** `package*.json`, `scripts/`, `.github/workflows/`, and the git-ignored root `agents/`, `skills/`, `hooks/`, `instructions/`, `plugins/`, `workflows/`.
 - **Only edit when asked:** review and triage requests produce a recommendation, not a README edit.

@@ -65,8 +65,8 @@ Entries in the Frameworks and Implementations section are maintained open-source
 
 - Sections are organised by where the improvement lands: inference-time, data- and weight-level, or process-level (see the introduction and Field Map in the README). Choose the narrowest section that describes the mechanism.
 - If two sections fit, choose the one where readers would most naturally look first.
-- Follow the section's existing order: new entries are appended to the end of the section unless the section clearly uses another order.
-- Do not create a new section for a single resource, and do not move or reorder existing entries in an entry pull request. Section additions, splits, merges, and renames are proposed separately and need maintainer approval.
+- Entries within a section run oldest first by the year in their venue tag, and undated entries come last. Place a new entry after the existing entries of the same year; for a recent paper that usually means the end of the section. Frameworks and Implementations and Related Awesome Lists have no years and are appended.
+- Do not create a new section for a single resource, and do not move other entries in an entry pull request. (When an entry's venue tag changes year, move that entry to keep the order.) Section additions, splits, merges, and renames are proposed separately and need maintainer approval.
 
 ## Duplicates
 
