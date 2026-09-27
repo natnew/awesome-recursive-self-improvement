@@ -80,13 +80,14 @@ Three short routes through the list, from accessible to advanced. Each step name
 
 ### Safety and limits
 
-| Step | Entry                                                                                   | Section                        | Why                                          |
-| ---- | --------------------------------------------------------------------------------------- | ------------------------------ | -------------------------------------------- |
-| 1    | Safety Must Precede the Deployment of Open-Ended AI                                     | Safety, Governance, and Limits | Framing the risks of open-ended improvement. |
-| 2    | Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use                | Safety, Governance, and Limits | When the loop optimises the wrong thing.     |
-| 3    | SHADE-Arena: Evaluating Sabotage and Monitoring in LLM Agents                           | Safety, Governance, and Limits | Hidden objectives and monitoring.            |
-| 4    | RepliBench: Evaluating the Autonomous Replication Capabilities of Language Model Agents | Safety, Governance, and Limits | Measuring autonomous replication.            |
-| 5    | AI models collapse when trained on recursively generated data                           | Safety, Governance, and Limits | The degenerate limit of recursive training.  |
+| Step | Entry                                                                                   | Section                        | Why                                                         |
+| ---- | --------------------------------------------------------------------------------------- | ------------------------------ | ----------------------------------------------------------- |
+| 1    | Safety Must Precede the Deployment of Open-Ended AI                                     | Safety, Governance, and Limits | Framing the risks of open-ended improvement.                |
+| 2    | Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use                | Safety, Governance, and Limits | When the loop optimises the wrong thing.                    |
+| 3    | SHADE-Arena: Evaluating Sabotage and Monitoring in LLM Agents                           | Safety, Governance, and Limits | Hidden objectives and monitoring.                           |
+| 4    | RepliBench: Evaluating the Autonomous Replication Capabilities of Language Model Agents | Safety, Governance, and Limits | Measuring autonomous replication.                           |
+| 5    | AI models collapse when trained on recursively generated data                           | Safety, Governance, and Limits | The degenerate limit of recursive training.                 |
+| 6    | Large Language Models Cannot Self-Correct Reasoning Yet                                 | Self-Refinement and Reflection | Why a loop needs a feedback signal beyond the model itself. |
 
 ## Surveys and Overviews
 
@@ -121,6 +122,7 @@ Inference-time loops in which a system critiques and revises a specific output; 
 
 - [Self-Refine: Iterative Refinement with Self-Feedback](https://proceedings.neurips.cc/paper_files/paper/2023/hash/91edff07232fb1b55a505a9e9f6c0ff3-Abstract-Conference.html) (NeurIPS 2023) \[[code](https://github.com/madaan/self-refine)\] - Introduces an iterative self-feedback method for improving model outputs without additional training.
 - [Reflexion: Language Agents with Verbal Reinforcement Learning](https://papers.nips.cc/paper_files/paper/2023/hash/1b44b878bb782e6954cd888628510e90-Abstract-Conference.html) (NeurIPS 2023) \[[code](https://github.com/noahshinn/reflexion)\] - Studies agents that convert feedback into verbal reflections stored in memory for future trials.
+- [Large Language Models Cannot Self-Correct Reasoning Yet](https://proceedings.iclr.cc/paper_files/paper/2024/hash/8b4add8b0aa8749d80a34ca5d941c355-Abstract-Conference.html) (ICLR 2024) - Finds that without external feedback, language models struggle to correct their own reasoning and can perform worse after attempting to.
 - [Training Language Models to Self-Correct via Reinforcement Learning](https://openreview.net/forum?id=CjwERcAU7w) (ICLR 2025) - Trains models on their own correction traces to improve test-time self-correction behaviour.
 - [ReVISE: Learning to Refine at Test-Time via Intrinsic Self-Verification](https://proceedings.mlr.press/v267/lee25ab.html) (ICML 2025) - Trains models to refine answers at test time using intrinsic self-verification signals.
 
@@ -138,6 +140,7 @@ Improvement applied during deployment that persists across queries: weights, mem
 Improvement that lands in durable memory: trajectories, workflows, and principles distilled from past episodes and reused across tasks.
 
 - [Investigate-Consolidate-Exploit: A General Strategy for Inter-Task Agent Self-Evolution](https://arxiv.org/abs/2401.13996) (arXiv 2024) - Proposes an inter-task loop for agents to investigate tasks, consolidate reusable experience, and exploit it on future tasks.
+- [ExpeL: LLM Agents Are Experiential Learners](https://ojs.aaai.org/index.php/AAAI/article/view/29936) (AAAI 2024) \[[code](https://github.com/LeapLabTHU/ExpeL)\] - Gathers experience across training tasks, extracts natural-language insights from it, and recalls those insights at inference without parameter updates.
 - [Contextual Experience Replay for Self-Improvement of Language Agents](https://aclanthology.org/2025.acl-long.694/) (ACL 2025) - Enables language agents to distil, retrieve, and replay past experience within the context window.
 - [Agent Learning via Early Experience](https://arxiv.org/abs/2510.08558) (arXiv 2025) - Studies how agents can learn from their own early rollouts before reinforcement learning with explicit rewards.
 - [Self-Generated In-Context Examples Improve LLM Agents for Sequential Decision-Making Tasks](https://arxiv.org/abs/2505.00234) (arXiv 2025) - Shows that accumulating and reusing successful self-generated trajectories can improve sequential decision-making agents.
@@ -154,6 +157,7 @@ Data- and weight-level loops: the model produces its own training signal — dat
 - [STaR: Bootstrapping Reasoning With Reasoning](https://proceedings.neurips.cc/paper_files/paper/2022/hash/639a9a172c044fbb64175b5fad42e9a5-Abstract-Conference.html) (NeurIPS 2022) \[[code](https://github.com/ezelikman/STaR)\] - Bootstraps reasoning ability by iteratively fine-tuning a model on its own generated rationales that lead to correct answers.
 - [Constitutional AI: Harmlessness from AI Feedback](https://arxiv.org/abs/2212.08073) (arXiv 2022) - Demonstrates critique, revision, and preference modelling using AI feedback instead of human labels for harmlessness training.
 - [Reinforced Self-Training (ReST) for Language Modeling](https://arxiv.org/abs/2308.08998) (arXiv 2023) - Alternates between sampling a dataset from the current policy and improving the policy offline on reward-filtered samples.
+- [Large Language Models Can Self-Improve](https://aclanthology.org/2023.emnlp-main.67/) (EMNLP 2023) - Fine-tunes a model on its own high-confidence, self-consistent reasoning for unlabelled questions to improve reasoning without supervision.
 - [Beyond Human Data: Scaling Self-Training for Problem-Solving with Language Models](https://openreview.net/forum?id=lNAyUngGFK) (TMLR 2024) - Scales expectation-maximisation self-training on model-generated, verifier-filtered solutions beyond what fine-tuning on human data achieves.
 - [RLAIF vs. RLHF: Scaling Reinforcement Learning from Human Feedback with AI Feedback](https://proceedings.mlr.press/v235/lee24t.html) (ICML 2024) - Shows that AI-generated preference labels can match human feedback for reinforcement learning across summarisation and dialogue tasks.
 - [Self-Rewarding Language Models](https://proceedings.mlr.press/v235/yuan24d.html) (ICML 2024) - Uses the language model itself as a judge to produce rewards for iterative instruction following and preference training.
@@ -197,6 +201,7 @@ Process-level loops in which systems modify code — including their own — and
 - [Self-Taught Optimizer (STOP): Recursively Self-Improving Code Generation](https://openreview.net/forum?id=46Zgqo4QIU) (COLM 2024) - Demonstrates a code-improver scaffold that recursively rewrites its own improvement procedure under a utility function.
 - [AlphaEvolve: A Coding Agent for Scientific and Algorithmic Discovery](https://arxiv.org/abs/2506.13131) (arXiv 2025) - Presents an evolutionary coding agent that proposes, tests, and selects algorithmic improvements across mathematics and computing infrastructure.
 - [ReVeal: Self-Evolving Code Agents via Reliable Self-Verification](https://arxiv.org/abs/2506.11442) (arXiv 2025) - Improves code generation through reinforcement learning over iterative generation, self-verification, and tool-based evaluation.
+- [A Self-Improving Coding Agent](https://arxiv.org/abs/2504.15228) (arXiv 2025) - Presents a coding agent that edits its own codebase and keeps changes that improve its benchmark performance, cost, and speed.
 - [Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents](https://proceedings.iclr.cc/paper_files/paper/2026/hash/aa5f5e6eb6f613ec412f1d948dfa21a5-Abstract-Conference.html) (ICLR 2026) \[[code](https://github.com/jennyzzt/dgm)\] - Evolves coding agents by modifying their code, evaluating variants, and maintaining an archive of successful descendants.
 - [Huxley-Gödel Machine: Human-Level Coding Agent Development by an Approximation of the Optimal Self-Improving Machine](https://openreview.net/forum?id=T0EiEuhOOL) (ICLR 2026) - Guides the search over a coding agent's self-modifications using a lineage-based estimate of long-term improvement potential.
 
@@ -245,6 +250,8 @@ Maintained open-source software for building self-improvement loops. Research co
 Benchmarks and evaluations that measure whether improvement loops actually improve anything.
 
 - [MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering](https://openreview.net/forum?id=6s5uXNWGIh) (ICLR 2025) \[[code](https://github.com/openai/mle-bench)\] - Evaluates agents on real machine-learning engineering tasks derived from Kaggle competitions.
+- [RE-Bench: Evaluating Frontier AI R&D Capabilities of Language Model Agents against Human Experts](https://proceedings.mlr.press/v267/wijk25a.html) (ICML 2025) \[[code](https://github.com/METR/RE-Bench)\] - Compares language-model agents with human experts on open-ended machine-learning research-engineering environments to measure AI R&D automation.
+- [PaperBench: Evaluating AI’s Ability to Replicate AI Research](https://proceedings.mlr.press/v267/starace25a.html) (ICML 2025) - Measures whether agents can replicate recent machine-learning papers from scratch, using rubrics that decompose each replication into gradable sub-tasks.
 - [AIRS-Bench: a Suite of Tasks for Frontier AI Research Science Agents](https://arxiv.org/abs/2602.06855) (arXiv 2026) - Measures whether agents can handle the research lifecycle through idea generation, experiment analysis, and iterative refinement tasks.
 
 ## Safety, Governance, and Limits
@@ -256,6 +263,7 @@ Failure modes, dangerous-capability evaluations, and governance mechanisms that 
 - [Evaluating Frontier Models for Dangerous Capabilities](https://arxiv.org/abs/2403.13793) (arXiv 2024) - Pilots evaluations of frontier models for dangerous capabilities including self-proliferation and self-reasoning.
 - [Weak-to-Strong Generalization: Eliciting Strong Capabilities With Weak Supervision](https://proceedings.mlr.press/v235/burns24b.html) (ICML 2024) - Studies how strong models trained on labels from weaker supervisors can recover capabilities beyond their supervision, as an empirical setting for overseeing models stronger than their overseers.
 - [Introducing the Frontier Safety Framework](https://deepmind.google/discover/blog/introducing-the-frontier-safety-framework/) (Google DeepMind 2024) - Sets out critical capability levels, including machine-learning research automation, with mitigations applied as models approach them.
+- [Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data](https://arxiv.org/abs/2404.01413) (arXiv 2024) - Shows that accumulating synthetic data alongside the original real data across generations avoids the collapse seen when each generation replaces the last.
 - [EvilGenie: A Reward Hacking Benchmark](https://arxiv.org/abs/2511.21654) (arXiv 2025) - Tests whether coding agents exploit benchmark loopholes such as hard-coded cases or modified test files.
 - [SHADE-Arena: Evaluating Sabotage and Monitoring in LLM Agents](https://arxiv.org/abs/2506.15740) (arXiv 2025) - Tests whether agents can pursue hidden harmful objectives while evading monitoring.
 - [Safety Must Precede the Deployment of Open-Ended AI](https://arxiv.org/abs/2502.04512) (arXiv 2025) - Analyses safety risks and mitigation strategies for dynamic open-ended systems that can propagate and change over time.
