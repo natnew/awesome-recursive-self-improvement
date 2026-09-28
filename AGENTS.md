@@ -57,7 +57,6 @@ Do not assume the generic awesome-list pattern overrides this repository's exist
 | ----------------- | ---------------------------------------------------------------- |
 | `README.md`       | The list itself — the main artefact.                             |
 | `CONTRIBUTING.md` | How to propose additions and the quality bar for entries.        |
-| `assets/`         | Images referenced by the README.                                 |
 | `scripts/`        | Maintenance tooling (e.g. link checking).                        |
 | `.github/`        | CI, governance, and a curated subset of agent/skill definitions. |
 

@@ -8,11 +8,7 @@
   "scripts": {
     "lint": "markdownlint-cli2 \"**/*.md\" && prettier --check \"**/*.{md,json,yml,yaml}\"",
     "format": "prettier --write \"**/*.{md,json,yml,yaml}\"",
-    "test": "npm run lint && node scripts/link-check.mjs",
-    "build": "node -e \"console.log('No build step: this is a curated awesome-list repository.')\""
-  },
-  "dependencies": {
-    "pino": "^10.3.1"
+    "test": "npm run lint && node scripts/link-check.mjs"
   },
   "devDependencies": {
     "markdownlint-cli2": "^0.23.3",

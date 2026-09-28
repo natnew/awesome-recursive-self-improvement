@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
 
 permissions:
   contents: read
@@ -31,28 +30,3 @@ jobs:
 
       - name: Link check
         run: node scripts/link-check.mjs
-
-  apm-audit:
-    name: APM install & audit
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v7
-
-      - name: Set up Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.12"
-
-      - name: Install APM CLI
-        run: pip install apm-cli
-
-      - name: Enable APM registry support
-        run: apm experimental enable registries
-
-      - name: Install and audit APM agent dependencies
-        env:
-          CONTEXT7_API_KEY: ci-placeholder
-        run: |
-          apm install --target claude,copilot
-          apm audit --ci
