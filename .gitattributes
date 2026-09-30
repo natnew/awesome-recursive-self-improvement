@@ -1,0 +1,3 @@
+# Count Markdown in GitHub's language statistics so the repository is shown as a
+# Markdown list rather than as JavaScript (the only code is the maintenance scripts).
+*.md linguist-detectable=true
