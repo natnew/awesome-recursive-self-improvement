@@ -237,6 +237,7 @@ Maintained open-source software for building self-improvement loops. Research co
 - [OpenEvolve](https://github.com/codelion/openevolve) - Open-source evolutionary coding agent that iteratively improves programs using LLM-proposed mutations and automated evaluation.
 - [EvoAgentX](https://github.com/EvoAgentX/EvoAgentX) - Open-source platform for generating, executing, and evolutionarily optimising agent workflows.
 - [Gear](https://github.com/rsi-gear/gear) - Open-source framework that optimises agent prompts, tools, and workflows from execution traces and benchmark feedback, keeping versioned harness candidates across rounds.
+- [Reef](https://github.com/Human-Agent-Society/reef) - Python infrastructure that records agent requests served through OpenAI- and Anthropic-compatible endpoints, matches later scores and feedback to those records, and publishes the model-weight or harness updates its configured selection policy accepts as new versions of the running deployment.
 
 ## Evaluation, Verification, and Benchmarks
 
