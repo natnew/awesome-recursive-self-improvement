@@ -269,6 +269,7 @@ Failure modes, dangerous-capability evaluations, and governance mechanisms that 
 - [Introducing the Frontier Safety Framework](https://deepmind.google/discover/blog/introducing-the-frontier-safety-framework/) (Google DeepMind 2024) - Sets out critical capability levels, including machine-learning research automation, with mitigations applied as models approach them.
 - [METR](https://metr.org/) - Research organisation that evaluates frontier AI systems for autonomous-replication and AI research-and-development capabilities.
 - [False Frontiers: Diagnosing and Mitigating Co-Cheating in Self-Evolving Search Agents](https://arxiv.org/abs/2609.39102) (arXiv 2026) - Shows that proposer–solver self-evolution of search agents can converge on shared errors that raise internal reward without external correctness gains, and mitigates this with cross-fold feedback solvers.
+- [rsi.watch](https://rsi.watch/) - Tracks public statements by AI labs and researchers about whether AI systems are improving their own development, recording for each the exact wording, the primary-source link, the date, an evidence level and whether anyone has replicated it.
 
 ## Related Awesome Lists
 
