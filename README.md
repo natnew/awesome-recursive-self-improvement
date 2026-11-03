@@ -143,6 +143,7 @@ Improvement that lands in durable memory: trajectories, workflows, and principle
 - [EvolveR: Self-Evolving LLM Agents through an Experience-Driven Lifecycle](https://arxiv.org/abs/2510.16079) (arXiv 2025) - Closes the loop between offline distillation of strategic principles and online interaction in which agents retrieve and reinforce them.
 - [Rethinking Continual Experience Internalization for Self-Evolving LLM Agents](https://arxiv.org/abs/2606.04703) (arXiv 2026) - Analyses why repeated experience-internalisation cycles destabilise agents and proposes principle-level experience with step-wise injection and off-policy distillation.
 - [Sample-Efficient Learning from Agent Experience](https://arxiv.org/abs/2607.21051) (arXiv 2026) - Distils trial-and-error interaction histories into model weights without requiring further environment interactions.
+- [Learning from Repair Experience: Self-Evolving Agents for Automated Vulnerability Repair](https://arxiv.org/abs/2605.30105) (ICSE 2027) [[code](https://github.com/iSEngLab/Learn-from-Repair-Experience)] - Distils vulnerability-repair trajectories into a quality-scored experience bank that is updated and reused across later repair episodes.
 
 ## Self-Generated Data and Self-Rewarding Models
 
