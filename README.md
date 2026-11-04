@@ -118,6 +118,7 @@ Inference-time loops in which a system critiques and revises a specific output; 
 
 - [Self-Refine: Iterative Refinement with Self-Feedback](https://arxiv.org/abs/2303.17651) (arXiv 2023) [[code](https://github.com/madaan/self-refine)] - Introduces an iterative self-feedback method for improving model outputs without additional training.
 - [Reflexion: Language Agents with Verbal Reinforcement Learning](https://papers.nips.cc/paper_files/paper/2023/hash/1b44b878bb782e6954cd888628510e90-Abstract-Conference.html) (NeurIPS 2023) [[code](https://github.com/noahshinn/reflexion)] - Studies agents that convert feedback into verbal reflections stored in memory for future trials.
+- [Translate-and-Revise: Boosting Large Language Models for Constrained Translation](https://aclanthology.org/2024.ccl-1.82/) (CCL 2024) - Adds a revision step that prompts the LLM with the translation constraints its output has not yet met, so it corrects its own constrained translation within the episode.
 - [Training Language Models to Self-Correct via Reinforcement Learning](https://arxiv.org/abs/2409.12917) (arXiv 2024) - Trains models on their own correction traces to improve test-time self-correction behaviour.
 - [ReVISE: Learning to Refine at Test-Time via Intrinsic Self-Verification](https://arxiv.org/abs/2502.14565) (arXiv 2025) - Trains models to refine answers at test time using intrinsic self-verification signals.
 
