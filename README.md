@@ -251,6 +251,7 @@ Benchmarks and evaluations that measure whether improvement loops actually impro
 - [ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery](https://openreview.net/forum?id=6z4YKr0GK6) (ICLR 2025) [[code](https://github.com/OSU-NLP-Group/ScienceAgentBench)] - Benchmarks language agents on code-driven tasks in data-driven scientific discovery.
 - [AIRS-Bench: a Suite of Tasks for Frontier AI Research Science Agents](https://arxiv.org/abs/2602.06855) (arXiv 2026) - Measures whether agents can handle the research lifecycle through idea generation, experiment analysis, and iterative refinement tasks.
 - [AutoDataBench: Can Agents Write the Data That Feeds the Self-Improvement Loop?](https://arxiv.org/abs/2609.35025) (arXiv 2026) [[code](https://github.com/StarDewXXX/AutoDataBench)] - Evaluates whether agents can author new executable training tasks for a target model, scoring deliveries on validity, novelty, difficulty, and behavioural coverage rather than downstream training outcomes.
+- [Auditing Self-Improving AI Systems](https://sunghunkwag.github.io/research/self-improvement-audits/) (Intelligence Research Project 2026) - Records 27 issues filed on 23 open-source self-improving agent repositories and groups the evaluation, selection, and gating failures they raise into seven patterns.
 
 ## Safety, Governance, and Limits
 
